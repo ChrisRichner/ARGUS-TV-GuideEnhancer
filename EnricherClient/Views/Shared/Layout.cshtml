@@ -1,0 +1,14 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+<!DOCTYPE html>
+<html>
+<head>
+    @RenderSection("head", false)
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="/Content/Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="/Content/Scripts/jquery-1.8.3.js"></script>
+    <link rel="stylesheet" href="/Content/bootstrap.css"/>
+</head>
+<body>
+    @RenderBody()
+</body>
+</html>

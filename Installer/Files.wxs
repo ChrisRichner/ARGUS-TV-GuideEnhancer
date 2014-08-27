@@ -1,0 +1,43 @@
+﻿<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+   <Fragment>
+      <DirectoryRef Id="TARGETDIR">
+         <Directory Id="ProgramFilesFolder" Name="PFiles">
+            <Directory Id="INSTALLDIR" Name="Guide Enricher">
+               <Component Id="License" Guid="16ED3327-230C-4A7B-A593-6684E27D71FF" DiskId="1">
+                  <File Id="LicenseFile" Name="license.rtf" Source="license.rtf"/>
+               </Component>
+               <Component Id="ServiceExe" Guid="BB06A3CF-236E-4612-B23D-671210C4270D">
+                 
+                  <File Id="ServiceExe" Name="GuideEnricherService.exe" Source="..\GuideEnricher\bin\Release\GuideEnricherService.exe" KeyPath="yes"/>
+                  <ServiceControl Id="ServiceExeStart" 
+                                  Name="GuideEnricher"
+                                  Stop="both" 
+                                  Remove="uninstall" 
+                                  Wait="yes" />
+               
+               </Component>
+               <Component Id="ServiceExeConfig" Guid="8A85871A-BAA0-424F-bFAA-D1CB576D8F74" KeyPath="yes" Permanent="yes">
+                  <File Id="ServiceExeConfig" Name="GuideEnricherService.exe.config" Source="..\GuideEnricher\bin\Release\GuideEnricherService.exe.config"/>
+               </Component>
+               <Component Id="Tvdblibdll" Guid="0A2F94ED-4D4E-4E3B-82BE-4B936C96F6F7" KeyPath="yes">
+                  <File Id="Tvdblibdll" Name="TvdbLib.dll" Source="..\GuideEnricher\bin\Release\TvdbLib.dll"/>
+               </Component>
+               <Component Id="ftrfiles" Guid="68699CF2-2A86-4606-B1A6-4C2EF91A6DB1" KeyPath="yes">
+                  <File Id="ftrdllclient" Name="ArgusTV.Client.Common.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.Client.Common.dll"/>
+                  <File Id="ftrdllentities" Name="ArgusTV.DataContracts.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.DataContracts.dll"/>
+                  <File Id="ftrdllserviceagents" Name="ArgusTV.ServiceAgents.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.ServiceAgents.dll"/>
+                  <File Id="ftrdllservicecontracts" Name="ArgusTV.ServiceContracts.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.ServiceContracts.dll"/>
+               </Component>
+              <Component Id="topshelf" Guid="40B2A181-F42F-46EB-997C-8EF890E7B89D" KeyPath="yes">
+                <File Id="topshelf" Name="Topshelf.dll" Source="..\References\Topshelf\Topshelf.dll"/>
+              </Component>
+              <Component Id="log4net" Guid="1E687561-415B-4A91-82C9-D4BC9D440278" KeyPath="yes">
+                <File Id="log4netdll" Name="log4net.dll" Source="..\GuideEnricher\bin\Release\log4net.dll"/>
+                <File Id="log4netlicense" Name="log4net_license.txt" Source="..\References\log4net\license.txt"/>
+              </Component>
+            </Directory>
+         </Directory>
+      </DirectoryRef>
+   </Fragment>
+</Wix>

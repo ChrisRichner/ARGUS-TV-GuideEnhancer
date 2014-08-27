@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProgramFiles32 Condition="Exists('$(PROGRAMFILES) (x86)')">$(PROGRAMFILES) (x86)</ProgramFiles32>
+    <ProgramFiles32 Condition="$(ProgramFiles32) == ''">$(PROGRAMFILES)</ProgramFiles32>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ProjectGuid>{B8B5FC14-5075-4D5F-AC58-E093AF3DCDBB}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Package</OutputType>
+    <RootNamespace>Installer</RootNamespace>
+    <OutputName>GuideEnricherInstall</OutputName>
+    <WixToolPath Condition=" '$(WixToolPath)' == '' ">$(ProgramFiles32)\WiX Toolset v3.7\bin</WixToolPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\wix.targets</WixTargetsPath>
+    <WixTasksPath Condition=" '$(WixTasksPath)' == '' ">$(ProgramFiles32)\WiX Toolset v3.7\bin\WixTasks.dll</WixTasksPath>
+    <SupressIces>ICE45</SupressIces>
+    <WixVariables>WixUILicenseRtf=license.rtf</WixVariables>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <PreBuildEvent>rmdir ..\..\dist /s /q;
+mkdir ..\..\dist;
+copy ..\..\..\GuideEnricher\bin\Release\* ..\..\dist;
+</PreBuildEvent>
+    <StartAction>Project</StartAction>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Files.wxs" />
+    <Compile Include="Setup.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="license.rtf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConfigTool\ConfigTool.csproj">
+      <Project>{D344EB44-2423-411C-9324-8226616D5DE5}</Project>
+      <Name>ConfigTool</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GuideEnricher\GuideEnricherService.csproj">
+      <Project>{9D718DA7-3160-4968-8048-361D7C1F3009}</Project>
+      <Name>GuideEnricherService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixUIExtension">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Windows Installer XML v3.6\bin\WixUIExtension.dll</HintPath>
+      <Name>WixUIExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" />
+  <PropertyGroup>
+    <PreBuildEvent />
+  </PropertyGroup>
+</Project>

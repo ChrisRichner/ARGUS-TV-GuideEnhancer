@@ -1,0 +1,71 @@
+﻿<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+     Name="Guide Enricher"
+     Language="1033"
+     Version="2.0.2"
+     UpgradeCode="CE3B101C-2509-46EF-89F4-C9DE51AFCE42"
+     Manufacturer="Geoff Stewart">
+    <Package Description="#Description"
+       Comments="Comments"
+       InstallerVersion="200"
+       Compressed="yes"/>
+    <!--
+         Source media for the installation. 
+          Specifies a single cab file to be embedded in the installer's .msi. 
+      -->
+    <Media Id="1" Cabinet="contents.cab" EmbedCab="yes" CompressionLevel="high"/>
+
+    <!-- Installation directory and files are defined in Files.wxs -->
+    <Directory Id="TARGETDIR" Name="SourceDir"/>
+
+    <Feature Id="Complete"
+              Title="Guide Enricher Install"
+              Description="Main entry point for installer"
+              Level="1">
+      <ComponentRef Id="License"/>
+      <ComponentRef Id="ServiceExe"/>
+      <ComponentRef Id="ServiceExeConfig"/>
+      <ComponentRef Id="Tvdblibdll"/>
+      <ComponentRef Id="ftrfiles"/>
+      <ComponentRef Id="log4net"/>
+      <ComponentRef Id="topshelf"/>
+    </Feature>
+
+    <!-- 
+         Using the Wix UI library
+ 
+         WixUI_InstallDir does not allow the user to choose 
+         features but adds a dialog to let the user choose a 
+         directory where the product will be installed
+      -->
+    <Property Id="WIXUI_INSTALLDIR">INSTALLDIR</Property>
+    <UIRef Id="WixUI_InstallDir"/>
+
+
+    <Upgrade Id="63C6AE4C-7503-4665-AC08-2DFF7CA464EB">
+      <UpgradeVersion OnlyDetect="no" Minimum="0.1" Property="NEWFILES">
+
+      </UpgradeVersion>
+    </Upgrade>
+    <CustomAction Id="InstallService" FileKey="ServiceExe" ExeCommand="install" Execute="deferred" Return="check" Impersonate="no" />
+    <CustomAction Id="UninstallService" FileKey="ServiceExe" ExeCommand="uninstall" Execute="deferred" Return="ignore" Impersonate="no" />
+
+    <CustomAction Id="SetCMD_Prop" Property="CMD_PROP" Value="[SystemFolder]cmd.exe" />
+    <CustomAction Id="BackupConfig2" Property="CMD_PROP" Execute="deferred" Impersonate="no" Return="ignore"
+                  ExeCommand="/c move &quot;[INSTALLDIR]GuideEnricherService.exe.config&quot; &quot;[INSTALLDIR]GuideEnricherService.exe.config.bak&quot;" />
+    <CustomAction Id="StartService" Property="CMD_PROP" Execute="deferred" Impersonate="no" Return="ignore"
+                  ExeCommand="/c net start &quot;Guide Enricher&quot;" />
+    <CustomAction Id="StopService" Property="CMD_PROP" Execute="deferred" Impersonate="no" Return="ignore"
+                  ExeCommand="/c net stop &quot;Guide Enricher&quot;" />
+    <InstallExecuteSequence>
+      <RemoveExistingProducts Before="InstallInitialize"/>
+      <Custom Action="InstallService" Before="InstallFinalize">NOT Installed</Custom>
+      <Custom Action="StartService" After="InstallService">NOT Installed</Custom>
+      <Custom Action="SetCMD_Prop" Before="InstallInitialize" />
+      <Custom Action="BackupConfig2" After="InstallInitialize">Installed AND NOT UPGRADINGPRODUCTCODE</Custom>
+      <Custom Action="StopService" Before ="UninstallService">Installed AND NOT UPGRADINGPRODUCTCODE</Custom>
+      <Custom Action="UninstallService" After="InstallInitialize">Installed AND NOT UPGRADINGPRODUCTCODE</Custom>
+    </InstallExecuteSequence>
+  </Product>
+</Wix>

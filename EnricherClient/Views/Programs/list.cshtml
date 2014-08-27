@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "Shared/Layout.cshtml";
+}
+@section Header
+{
+    
+}
+<h1>Programs</h1>
+<ul data-bind="foreach: model">
+    <li data-bind="text: name"></li>
+</ul>
+
+<script>
+    var model = "@Model";
+/// <reference path="/Scripts/knockout-2.2.0.debug.js" />
+    $("document").ready(function() {
+        ko.applyBindings();
+    });
+</script>
