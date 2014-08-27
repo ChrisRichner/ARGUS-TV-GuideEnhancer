@@ -152,7 +152,7 @@ namespace GuideEnricher
         {
             var serverSettings = new ArgusTV.ServiceProxy.ServerSettings();
             serverSettings.ServerName = config.getProperty("ftrUrlHost");
-            serverSettings.Transport = ArgusTV.ServiceProxy.ServiceTransport.Https;
+            serverSettings.Transport = ArgusTV.ServiceProxy.ServiceTransport.Http;
             serverSettings.Port = Convert.ToInt32(config.getProperty("ftrUrlPort"));
             var password = config.getProperty("ftrUrlPassword");
             var userName = config.getProperty("ftrUserName");
@@ -171,14 +171,7 @@ namespace GuideEnricher
 
         internal static bool InitializeConnectionToArgusTV()
         {
-            //Service.InitializeConnectionToArgusTV();
             ArgusTV.ServiceProxy.ServerSettings serverSettings = Service.GetServerSettings();
-            /*serverSettings.ServerName = Config.Current.ServerName;
-            serverSettings.Port = Config.Current.Port;
-            serverSettings.UserName = Config.Current.UserName;
-            serverSettings.Password = Config.Current.Password;*/
-            //serverSettings.Port = 49943;
-            serverSettings.Transport = ServiceTransport.Http;            
             return ArgusTV.ServiceProxy.Proxies.Initialize(serverSettings, false);
         }
     }
