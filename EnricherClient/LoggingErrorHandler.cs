@@ -5,7 +5,7 @@ using log4net;
 
 namespace EnricherClient
 {
-    public class LoggingErrorHandler : IErrorHandler
+    public class LoggingErrorHandler : IStatusCodeHandler
     {
         private readonly ILog _logger = LogManager.GetLogger(typeof(LoggingErrorHandler));
         

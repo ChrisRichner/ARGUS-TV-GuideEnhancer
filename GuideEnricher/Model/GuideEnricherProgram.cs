@@ -50,7 +50,7 @@ namespace GuideEnricher.Model
             return string.Format("{0}-{1}", this.Title, this.SubTitle);
         }
 
-        public string CreateProgramTitle()
+        new public string CreateProgramTitle()
         {
             return this.guideProgram.CreateProgramTitle();
         }
