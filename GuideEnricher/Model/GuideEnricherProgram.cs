@@ -55,166 +55,166 @@ namespace GuideEnricher.Model
             return this.guideProgram.CreateProgramTitle();
         }
 
-        public string CreateEpisodeTitle()
+        new public string CreateEpisodeTitle()
         {
             return this.guideProgram.CreateEpisodeTitle();
         }
 
-        public string CreateCombinedDescription(bool includeEpisodeTitle)
+        new public string CreateCombinedDescription(bool includeEpisodeTitle)
         {
             return this.guideProgram.CreateCombinedDescription(includeEpisodeTitle);
         }
 
-        public Guid GetUniqueUpcomingProgramId(Guid channelId)
+        new public Guid GetUniqueUpcomingProgramId(Guid channelId)
         {
             return this.guideProgram.GetUniqueUpcomingProgramId(channelId);
         }
 
-        public Guid GuideProgramId
+        new public Guid GuideProgramId
         {
             get { return this.guideProgram.GuideProgramId; }
             set { this.guideProgram.GuideProgramId = value; }
         }
 
-        public Guid GuideChannelId
+        new public Guid GuideChannelId
         {
             get { return this.guideProgram.GuideChannelId; }
             set { this.guideProgram.GuideChannelId = value; }
         }
 
-        public string Title
+        new public string Title
         {
             get { return this.guideProgram.Title; }
             set { this.guideProgram.Title = value; }
         }
 
-        public DateTime StartTime
+        new public DateTime StartTime
         {
             get { return this.guideProgram.StartTime; }
             set { this.guideProgram.StartTime = value; }
         }
 
-        public DateTime StopTime
+        new public DateTime StopTime
         {
             get { return this.guideProgram.StopTime; }
             set { this.guideProgram.StopTime = value; }
         }
 
-        public DateTime? PreviouslyAiredTime
+        new public DateTime? PreviouslyAiredTime
         {
             get { return this.guideProgram.PreviouslyAiredTime; }
             set { this.guideProgram.PreviouslyAiredTime = value; }
         }
 
-        public string SubTitle
+        new public string SubTitle
         {
             get { return this.guideProgram.SubTitle; }
             set { this.guideProgram.SubTitle = value; }
         }
 
-        public string Description
+        new public string Description
         {
             get { return this.guideProgram.Description; }
             set { this.guideProgram.Description = value; }
         }
 
-        public string Category
+        new public string Category
         {
             get { return this.guideProgram.Category; }
             set { this.guideProgram.Category = value; }
         }
 
-        public bool IsRepeat
+        new public bool IsRepeat
         {
             get { return this.guideProgram.IsRepeat; }
             set { this.guideProgram.IsRepeat = value; }
         }
 
-        public bool IsPremiere
+        new public bool IsPremiere
         {
             get { return this.guideProgram.IsPremiere; }
             set { this.guideProgram.IsPremiere = value; }
         }
 
-        public GuideProgramFlags Flags
+        new public GuideProgramFlags Flags
         {
             get { return this.guideProgram.Flags; }
             set { this.guideProgram.Flags = value; }
         }
 
-        public int? SeriesNumber
+        new public int? SeriesNumber
         {
             get { return this.guideProgram.SeriesNumber; }
             set { this.guideProgram.SeriesNumber = value; }
         }
 
-        public string EpisodeNumberDisplay
+        new public string EpisodeNumberDisplay
         {
             get { return this.guideProgram.EpisodeNumberDisplay; }
             set { this.guideProgram.EpisodeNumberDisplay = value; }
         }
 
-        public int? EpisodeNumber
+        new public int? EpisodeNumber
         {
             get { return this.guideProgram.EpisodeNumber; }
             set { this.guideProgram.EpisodeNumber = value; }
         }
 
-        public int? EpisodeNumberTotal
+        new public int? EpisodeNumberTotal
         {
             get { return this.guideProgram.EpisodeNumberTotal; }
             set { this.guideProgram.EpisodeNumberTotal = value; }
         }
 
-        public int? EpisodePart
+        new public int? EpisodePart
         {
             get { return this.guideProgram.EpisodePart; }
             set { this.guideProgram.EpisodePart = value; }
         }
 
-        public int? EpisodePartTotal
+        new public int? EpisodePartTotal
         {
             get { return this.guideProgram.EpisodePartTotal; }
             set { this.guideProgram.EpisodePartTotal = value; }
         }
 
-        public string Rating
+        new public string Rating
         {
             get { return this.guideProgram.Rating; }
             set { this.guideProgram.Rating = value; }
         }
 
-        public double? StarRating
+        new public double? StarRating
         {
             get { return this.guideProgram.StarRating; }
             set { this.guideProgram.StarRating = value; }
         }
 
-        public string[] Directors
+        new public string[] Directors
         {
             get { return this.guideProgram.Directors; }
             set { this.guideProgram.Directors = value; }
         }
 
-        public string[] Actors
+        new public string[] Actors
         {
             get { return this.guideProgram.Actors; }
             set { this.guideProgram.Actors = value; }
         }
 
-        public DateTime LastModifiedTime
+        new public DateTime LastModifiedTime
         {
             get { return this.guideProgram.LastModifiedTime; }
             set { this.guideProgram.LastModifiedTime = value; }
         }
 
-        public bool IsDeleted
+        new public bool IsDeleted
         {
             get { return this.guideProgram.IsDeleted; }
             set { this.guideProgram.IsDeleted = value; }
         }
 
-        public int Version
+        new public int Version
         {
             get { return this.guideProgram.Version; }
             set { this.guideProgram.Version = value; }
