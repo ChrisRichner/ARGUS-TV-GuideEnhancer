@@ -21,13 +21,13 @@
             HostFactory.Run(x =>
                 {
                     x.Service<Service>(s =>
-                                            {
-                                                s.SetServiceName("Guide Enricher");
+                                            {                                                
                                                 s.ConstructUsing(name => new Service());
                                                 s.WhenStarted(service => service.Start());
                                                 s.WhenStopped(service => service.Stop());
                                             });
                     x.RunAsLocalSystem();
+                    x.SetServiceName("Guide Enricher");
                     x.SetDescription("Fetches season and episode information from TheTVDB for For The Record's guide");
                     x.SetDisplayName("Guide Enricher");
                     x.SetServiceName("GuideEnricher");
