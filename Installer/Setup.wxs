@@ -3,9 +3,9 @@
   <Product Id="*"
      Name="Guide Enricher"
      Language="1033"
-     Version="2.0.2"
+     Version="2.3.0"
      UpgradeCode="CE3B101C-2509-46EF-89F4-C9DE51AFCE42"
-     Manufacturer="Geoff Stewart">
+     Manufacturer="Chris Richner">
     <Package Description="#Description"
        Comments="Comments"
        InstallerVersion="200"

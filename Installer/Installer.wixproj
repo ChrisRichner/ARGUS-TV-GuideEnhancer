@@ -11,9 +11,9 @@
     <OutputType>Package</OutputType>
     <RootNamespace>Installer</RootNamespace>
     <OutputName>GuideEnricherInstall</OutputName>
-    <WixToolPath Condition=" '$(WixToolPath)' == '' ">$(ProgramFiles32)\WiX Toolset v3.7\bin</WixToolPath>
+    <WixToolPath Condition=" '$(WixToolPath)' == '' ">$(ProgramFiles32)\WiX Toolset v3.8\bin</WixToolPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\wix.targets</WixTargetsPath>
-    <WixTasksPath Condition=" '$(WixTasksPath)' == '' ">$(ProgramFiles32)\WiX Toolset v3.7\bin\WixTasks.dll</WixTasksPath>
+    <WixTasksPath Condition=" '$(WixTasksPath)' == '' ">$(ProgramFiles32)\WiX Toolset v3.8\bin\WixTasks.dll</WixTasksPath>
     <SupressIces>ICE45</SupressIces>
     <WixVariables>WixUILicenseRtf=license.rtf</WixVariables>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
@@ -57,7 +57,7 @@ copy ..\..\..\GuideEnricher\bin\Release\* ..\..\dist;
   </ItemGroup>
   <ItemGroup>
     <WixExtension Include="WixUIExtension">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Windows Installer XML v3.6\bin\WixUIExtension.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Windows Installer XML v3.8\bin\WixUIExtension.dll</HintPath>
       <Name>WixUIExtension</Name>
     </WixExtension>
   </ItemGroup>

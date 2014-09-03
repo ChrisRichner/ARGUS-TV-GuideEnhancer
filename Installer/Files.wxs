@@ -24,17 +24,17 @@
                   <File Id="Tvdblibdll" Name="TvdbLib.dll" Source="..\GuideEnricher\bin\Release\TvdbLib.dll"/>
                </Component>
                <Component Id="ftrfiles" Guid="68699CF2-2A86-4606-B1A6-4C2EF91A6DB1" KeyPath="yes">
-                  <File Id="ftrdllclient" Name="ArgusTV.Client.Common.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.Client.Common.dll"/>
+                  <!--<File Id="ftrdllclient" Name="ArgusTV.Client.Common.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.Client.Common.dll"/>-->
                   <File Id="ftrdllentities" Name="ArgusTV.DataContracts.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.DataContracts.dll"/>
-                  <File Id="ftrdllserviceagents" Name="ArgusTV.ServiceAgents.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.ServiceAgents.dll"/>
-                  <File Id="ftrdllservicecontracts" Name="ArgusTV.ServiceContracts.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.ServiceContracts.dll"/>
+                  <File Id="ftrdllserviceagents" Name="ArgusTV.ServiceAgents.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.ServiceProxy.dll"/>
+                  <!--<File Id="ftrdllservicecontracts" Name="ArgusTV.ServiceContracts.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.ServiceContracts.dll"/>-->
                </Component>
               <Component Id="topshelf" Guid="40B2A181-F42F-46EB-997C-8EF890E7B89D" KeyPath="yes">
-                <File Id="topshelf" Name="Topshelf.dll" Source="..\References\Topshelf\Topshelf.dll"/>
+                <File Id="topshelf" Name="Topshelf.dll" Source="..\GuideEnricher\bin\Release\Topshelf.dll"/>
               </Component>
               <Component Id="log4net" Guid="1E687561-415B-4A91-82C9-D4BC9D440278" KeyPath="yes">
                 <File Id="log4netdll" Name="log4net.dll" Source="..\GuideEnricher\bin\Release\log4net.dll"/>
-                <File Id="log4netlicense" Name="log4net_license.txt" Source="..\References\log4net\license.txt"/>
+                <!--<File Id="log4netlicense" Name="log4net_license.txt" Source="..\References\log4net\license.txt"/>-->
               </Component>
             </Directory>
          </Directory>
