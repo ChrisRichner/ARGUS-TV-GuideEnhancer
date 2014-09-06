@@ -1,7 +1,7 @@
-Argus-TV-GuideEnhancer
+ARGUS-TV-GuideEnhancer
 ======================
 
-Electronic Program Guide Enhancer for Argus TV 2.3RC+
+Electronic Program Guide Enhancer for ARGUS TV 2.3RC+
 
 Pre Requisite
 ======================
@@ -15,7 +15,7 @@ Installation
 If you are going to use the Guide Enricher, follow these steps.
 
 Download the installer
-Make sure you have Argus-TV 2.3 RC+ installed and running
+Make sure you have ARGUS-TV 2.3 RC+ installed and running
 Run the Guide Enricher installer
 Only option is path where to install it...
 After a successful install (hopefully), you will have a windows service called GuideEnricher available (on versions higher than 0.5, the install does not start the service).
