@@ -1,5 +1,6 @@
 ﻿using ArgusTV.DataContracts;
 using ArgusTV.ServiceProxy;
+using GuideEnricher.Config;
 using log4net;
 using System;
 using System.Collections.Generic;
@@ -14,34 +15,34 @@ namespace GuideEnricher
 {
     class ForTheRecordListener : IDisposable
     {
-        private readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        #region fields
+        private readonly ILog _logger;
         private string _eventsClientId;
-        private SynchronizationContext _uiSyncContext;
 
         private Task _eventListenerTask;
         private CancellationTokenSource _listenerCancellationTokenSource;
+        readonly Action _enrich;
+        readonly IConfiguration _configuration;
 
-        public ForTheRecordListener()
+        protected const string MODULE = "GuideEnricher";
+        #endregion
+
+        #region ctor
+        public ForTheRecordListener(Action enrich, IConfiguration configuration, ILog logger)
         {
-            _uiSyncContext = SynchronizationContext.Current == null ? new SynchronizationContext() : SynchronizationContext.Current;
-
-            _eventsClientId = String.Format("{0}-{1}-99b8cd44d1ab459cb16f199a48086588", // Unique for the Notifier!
-                Dns.GetHostName(), System.Environment.GetEnvironmentVariable("SESSIONNAME"));
-            //StartEventListenerTask();
+            if (enrich == null) throw new ArgumentNullException("enrich");
+            if (configuration == null) throw new ArgumentNullException("configuration");
+            if (logger == null) throw new ArgumentNullException("logger");
+            //
+            _enrich = enrich;
+            _logger = logger;
+            _configuration = configuration;
+            //
+            _eventsClientId = Guid.NewGuid().ToString();// string.Format("{0}-{1}-99b8cd44d1ab459cb16f199a48086588", Dns.GetHostName(), Environment.GetEnvironmentVariable("SESSIONNAME"));
         }
+        #endregion
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                CancelEventListenerTask();
-            }
-        }
-
+        #region Listener
         public void StartEventListenerTask()
         {
             _listenerCancellationTokenSource = new CancellationTokenSource();
@@ -85,28 +86,6 @@ namespace GuideEnricher
             StartEventListenerTask();
         }
 
-        #region ARGUS TV Events
-
-        public void OnNewGuideData()
-        {
-            Service.Enrich(null, null);
-        }
-
-        public void OnUpcomingSuggestionsChanged()
-        {
-            Service.Enrich(null, null);
-        }
-
-        public void OnUpcomingRecordingsChanged()
-        {
-            Service.Enrich(null, null);
-        }
-
-        public void OnScheduleChanged()
-        {
-            Service.Enrich(null, null);
-        }
-
         #endregion
 
         #region Connection
@@ -114,16 +93,14 @@ namespace GuideEnricher
         private bool _eventListenerSubscribed;
         private int _eventsErrorCount;
 
-        public bool IsConnected { get; set; }
-
-        private void ConnectAndHandleEvents(CancellationToken cancellationToken)
+        private async void ConnectAndHandleEvents(CancellationToken cancellationToken)
         {
-            log.Info("Connection and event listener task started...");
+            _logger.Info("Connection and event listener task started...");
 
             _eventListenerSubscribed = false;
             _eventsErrorCount = 0;
 
-            for (; ; )
+            for (; ;)
             {
                 if (Proxies.IsInitialized)
                 {
@@ -132,41 +109,29 @@ namespace GuideEnricher
                     {
                         try
                         {
-                            Proxies.CoreService.SubscribeServiceEvents(_eventsClientId, EventGroup.GuideEvents | EventGroup.ScheduleEvents).Wait();
+                            await Proxies.CoreService.SubscribeServiceEvents(_eventsClientId, EventGroup.GuideEvents | EventGroup.ScheduleEvents);
                             _eventListenerSubscribed = true;
                             _eventsErrorCount = 0;
 
-                            log.Info("SubscribeServiceEvents() succeeded");
-
-                            this.IsConnected = true;
-                            _uiSyncContext.Post(s => RefreshStatus(), null);
+                            _logger.Info("SubscribeServiceEvents() succeeded");
                         }
                         catch (Exception ex)
                         {
-                            log.Warn("SubscribeServiceEvents() failed: " + ex.ToString());
+                            _logger.Warn("SubscribeServiceEvents() failed: " + ex.ToString());
                         }
                     }
                     if (_eventListenerSubscribed)
                     {
                         try
                         {
-                            this.IsConnected = true;
-                            _uiSyncContext.Post(s => RefreshStatus(), null);
-
-                            events = Proxies.CoreService.GetServiceEvents(_eventsClientId, cancellationToken).Result;
+                            events = await Proxies.CoreService.GetServiceEvents(_eventsClientId, cancellationToken);
                             if (events == null)
                             {
                                 _eventListenerSubscribed = false;
-                                _uiSyncContext.Post(s => RefreshStatus(), null);
                             }
                             else
                             {
-                                if (events.Count == 0)
-                                {
-                                    // In case of a timeout, let's refresh the general status -- to make sure we don't miss any events.
-                                    _uiSyncContext.Post(s => RefreshStatus(), null);
-                                }
-                                ProcessEvents(events);
+                                await Task.Run(_enrich);
                             }
                         }
                         catch (Exception ex)
@@ -175,14 +140,14 @@ namespace GuideEnricher
                                 || ++_eventsErrorCount > 5)
                             {
                                 _eventListenerSubscribed = false;
-                                _uiSyncContext.Post(s => log.Warn("Connection to Argus TV lost, make sure the Argus TV service is running"), null);
+                                _logger.Warn("Connection to Argus TV lost, make sure the Argus TV service is running");
                             }
                         }
                     }
                 }
                 else
                 {
-                    _uiSyncContext.Send(s => InitializeConnectionToArgusTV(), null);
+                    await InitializeConnectionToArgusTV();
                 }
                 if (cancellationToken.WaitHandle.WaitOne(TimeSpan.FromSeconds(_eventListenerSubscribed ? 0 : 10)))
                 {
@@ -195,7 +160,7 @@ namespace GuideEnricher
             {
                 try
                 {
-                    Proxies.CoreService.UnsubscribeServiceEvents(_eventsClientId).Wait();
+                    await Proxies.CoreService.UnsubscribeServiceEvents(_eventsClientId);
                 }
                 catch
                 {
@@ -204,48 +169,49 @@ namespace GuideEnricher
             }
         }
 
-        private void ProcessEvents(IList<ServiceEvent> events)
+        ServerSettings GetServerSettings()
         {
-            foreach (var @event in events)
+            var serverSettings = new ServerSettings();
+            serverSettings.ServerName = _configuration.GetProperty("ftrUrlHost");
+            serverSettings.Port = Convert.ToInt32(_configuration.GetProperty("ftrUrlPort"));
+            var password = _configuration.GetProperty("ftrUrlPassword");
+            var userName = _configuration.GetProperty("ftrUserName");
+
+            if (!string.IsNullOrEmpty(userName))
             {
-                if (@event.Name == ServiceEventNames.UpcomingRecordingsChanged)
-                {
-                    _uiSyncContext.Post(s => OnUpcomingRecordingsChanged(), null);
-                }
-                else if (@event.Name == ServiceEventNames.ScheduleChanged)
-                {
-                    _uiSyncContext.Post(s => OnScheduleChanged(), null);
-                }
-                else if (@event.Name == ServiceEventNames.NewGuideData)
-                {
-                    _uiSyncContext.Post(s => OnNewGuideData(), null);
-                }
-                else if (@event.Name == ServiceEventNames.UpcomingSuggestionsChanged)
-                {
-                    _uiSyncContext.Post(s => OnUpcomingSuggestionsChanged(), null);
-                }
+                serverSettings.UserName = userName;
             }
+            if (!string.IsNullOrEmpty(password))
+            {
+                serverSettings.Password = password;
+            }
+
+            return serverSettings;
         }
 
+        protected async Task<bool> InitializeConnectionToArgusTV()
+        {
+            ServerSettings serverSettings = GetServerSettings();
+            return await Proxies.InitializeAsync(serverSettings, false);
+        }
         #endregion
 
-        private void InitializeConnectionToArgusTV()
-        {
-            this.IsConnected = Service.InitializeConnectionToArgusTV();
-            if (this.IsConnected)
-            {
-
-            }
-        }
-
-        public void RefreshStatus()
-        {
-            Service.Enrich(null, null);
-        }
-
+        #region IDisposeable
         public void Dispose()
         {
             Dispose(true);
         }
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                CancelEventListenerTask();
+            }
+        }
+        #endregion
     }
 }

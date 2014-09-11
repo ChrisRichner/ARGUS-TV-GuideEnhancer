@@ -26,7 +26,7 @@
                <Component Id="ftrfiles" Guid="68699CF2-2A86-4606-B1A6-4C2EF91A6DB1" KeyPath="yes">
                   <!--<File Id="ftrdllclient" Name="ArgusTV.Client.Common.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.Client.Common.dll"/>-->
                   <File Id="ftrdllentities" Name="ArgusTV.DataContracts.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.DataContracts.dll"/>
-                  <File Id="ftrdllserviceagents" Name="ArgusTV.ServiceAgents.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.ServiceProxy.dll"/>
+                  <File Id="ftrdllserviceagents" Name="ArgusTV.ServiceProxy.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.ServiceProxy.dll"/>
                   <!--<File Id="ftrdllservicecontracts" Name="ArgusTV.ServiceContracts.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.ServiceContracts.dll"/>-->
                </Component>
               <Component Id="topshelf" Guid="40B2A181-F42F-46EB-997C-8EF890E7B89D" KeyPath="yes">

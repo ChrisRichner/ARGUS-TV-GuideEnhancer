@@ -152,7 +152,7 @@
             Proxies.LogService.LogMessage(MODULE, LogSeverity.Information, String.Format("About to commit enriched guide data. {0} entries were enriched.", this.enrichedPrograms.Count));
 
             int position = 0;
-            int windowSize = Int32.Parse(this.config.getProperty("maxShowNumberPerUpdate"));
+            int windowSize = Int32.Parse(this.config.GetProperty("maxShowNumberPerUpdate"));
             List<GuideProgram> guidesToUpdate;
 
             while (position + windowSize < this.enrichedPrograms.Count)
