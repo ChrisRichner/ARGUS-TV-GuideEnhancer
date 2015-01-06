@@ -69,7 +69,7 @@ namespace GuideEnricher
             {
                 if (Proxies.IsInitialized)
                 {
-                    if (Proxies.CoreService.Ping(Constants.CurrentApiVersion).Result > 0)
+                    if (Proxies.CoreService.Ping(Constants.RestApiVersion).Result > 0)
                     {
                         log.Debug("Ping");
                     }
@@ -116,7 +116,7 @@ namespace GuideEnricher
                 {
                     BusyEnriching = true;
                 }
-                int ping = Proxies.CoreService.Ping(Constants.CurrentApiVersion).Result;
+                int ping = Proxies.CoreService.Ping(Constants.RestApiVersion).Result;
                 if (ping > 0)
                 {
                     log.DebugFormat("Ping {0}", ping);

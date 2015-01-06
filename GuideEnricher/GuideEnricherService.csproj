@@ -70,11 +70,11 @@
   <ItemGroup>
     <Reference Include="ArgusTV.DataContracts, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ArgusTV.SchedulerProxy.2.3.0-rc\lib\net45\ArgusTV.DataContracts.dll</HintPath>
+      <HintPath>..\packages\ArgusTV.SchedulerProxy.2.3.0\lib\net45\ArgusTV.DataContracts.dll</HintPath>
     </Reference>
     <Reference Include="ArgusTV.ServiceProxy, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ArgusTV.SchedulerProxy.2.3.0-rc\lib\net45\ArgusTV.ServiceProxy.dll</HintPath>
+      <HintPath>..\packages\ArgusTV.SchedulerProxy.2.3.0\lib\net45\ArgusTV.ServiceProxy.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
