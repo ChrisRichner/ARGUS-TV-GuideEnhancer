@@ -139,9 +139,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GuideEnricher\GuideEnricherService.csproj">
+    <ProjectReference Include="..\GuideEnricher\Service.csproj">
       <Project>{9D718DA7-3160-4968-8048-361D7C1F3009}</Project>
-      <Name>GuideEnricherService</Name>
+      <Name>Service</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
