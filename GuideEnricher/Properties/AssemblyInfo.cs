@@ -10,11 +10,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("GuideEnricher")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Fetches season and episode information from TheTVDB for ARGUS-TV's guide")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer")]
 [assembly: AssemblyProduct("GuideEnricher")]
-[assembly: AssemblyCopyright("Copyright 2012")]
+[assembly: AssemblyCopyright("Copyright 2015 GitHub Contributors")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -28,5 +28,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can use the default the Revision and 
 // Build Numbers by using the '*' as shown below:
-[assembly: AssemblyVersion("2.0.2.*")]
-[assembly: log4net.Config.XmlConfigurator(Watch = true)] 
+[assembly: AssemblyVersion("2.3.0.*")]
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
