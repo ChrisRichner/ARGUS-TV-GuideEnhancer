@@ -72,31 +72,6 @@
             }
 
             throw new AggregateException(exceptions);
-        }
-
-        public static async Task DoAsync(
-            Func<Task> action,
-            TimeSpan retryInterval,
-            int retryCount = 3)
-        {
-            var exceptions = new List<Exception>();
-            for (int retry = 0; retry < retryCount; retry++)
-            {
-                try
-                {
-                    var task = action();
-                    task.Wait();
-                    if (task.Exception == null) return;
-
-                }
-                catch (Exception ex)
-                {
-                    exceptions.Add(ex);
-                    if (retry < (retryCount - 1)) await Task.Delay(retryInterval);
-                }
-            }
-
-            throw new AggregateException(exceptions);
-        }
+        }        
     }
 }
