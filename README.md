@@ -1,9 +1,9 @@
 #ARGUS-TV-GuideEnhancer
 **Electronic Program Guide Enhancer for ARGUS TV 2.3.0+**
 
-Argus TV is a sophisticated scheduling/recording engine. It has it's own Electronic Program Guide (EPG). You can populate the guide from many sources (i.e., xmltv, SchedulesDirect, etc.).
+[ARGUS TV](http://http://www.argus-tv.com/ "ARGUS TV") is a sophisticated scheduling/recording engine. It has it's own Electronic Program Guide (EPG). You can populate the guide from many sources (i.e., xmltv, SchedulesDirect, etc.).
 
-Regardless of the method with which you populate the EPG, you may want to "enrich" your guide data to add Season and Episode numbers (SxxExx). This "enrich"-ing is useful for XBMC or MediaPortal plugin TVSeries that automatically download episode information, backdrops, ratings, etc. By enriching your guide data, you can automatically have the SxxExx information in your file names and thus have TVSeries register your recordings with no manual intervention.
+Regardless of the method with which you populate the EPG, you may want to "enrich" your guide data to add Season and Episode numbers (SxxExx). This "enrich"-ing is useful for [XBMC/Kodi](http://www.kodi.tv "Kodi") or [MediaPortal](http://www.team-mediaportal.com/ "") plugin TVSeries that automatically download episode information, backdrops, ratings, etc. By enriching your guide data, you can automatically have the SxxExx information in your file names and thus have TVSeries register your recordings with no manual intervention.
 
 ##Getting Started
 If you are going to use the Guide Enricher, follow these steps.
