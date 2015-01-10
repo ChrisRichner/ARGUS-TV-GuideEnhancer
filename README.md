@@ -23,4 +23,6 @@ If you are going to use the Guide Enricher, follow these steps.
 If you see errors for series that cannot be found, take a look at the GuideEnricherService.exe.config file in the program directory. You will be able to add series name mappings in there. Restart the service for changes to take effect.
 
 ###Troubleshoot
-======================
+Logs are written to *%ProgramFiles(x86)%\Guide Enricher\guideenricher.log* . You can view them by simpley double clicking the *guideenricher.log* file in your desired text editor.
+
+Guide Enricher can also be started as a Console Application by double clicking *GuideEnricherService.exe* after you manually stopped the GuideEnricher Windows Service. The Console outputs all log events in real time.
