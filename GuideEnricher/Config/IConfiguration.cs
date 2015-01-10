@@ -4,7 +4,7 @@ namespace GuideEnricher.Config
 
     public interface IConfiguration
     {
-        string getProperty(string key);
+        string GetProperty(string key);
         Dictionary<string, string> getSeriesNameMap();
         List<string> getIgnoredSeries();
 

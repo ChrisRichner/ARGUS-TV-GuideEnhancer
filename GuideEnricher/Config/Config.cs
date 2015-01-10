@@ -19,7 +19,7 @@
             }
         }
 
-        public string getProperty(string key)
+        public string GetProperty(string key)
         {
             return ConfigurationManager.AppSettings[key];
         }

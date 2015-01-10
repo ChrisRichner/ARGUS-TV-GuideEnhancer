@@ -27,7 +27,7 @@ namespace GuideEnricher
 
         public Service()
         {
-            eventListener = new ForTheRecordListener();
+            eventListener = new ForTheRecordListener(new Action(() => Enrich(null, null)), config, log);
         }
 
         public void Start()
@@ -42,7 +42,7 @@ namespace GuideEnricher
                 ftrConnectionTimer.Elapsed += this.SetupFTRConnection;
                 ftrConnectionTimer.Start();
 
-                if (!int.TryParse(config.getProperty("sleepTimeInHours"), out waitTime))
+                if (!int.TryParse(config.GetProperty("sleepTimeInHours"), out waitTime))
                 {
                     waitTime = 12;
                 }
@@ -69,7 +69,7 @@ namespace GuideEnricher
             {
                 if (Proxies.IsInitialized)
                 {
-                    if (Proxies.CoreService.Ping(Constants.CurrentApiVersion).Result > 0)
+                    if (Proxies.CoreService.Ping(Constants.RestApiVersion).Result > 0)
                     {
                         log.Debug("Ping");
                     }
@@ -116,7 +116,7 @@ namespace GuideEnricher
                 {
                     BusyEnriching = true;
                 }
-                int ping = Proxies.CoreService.Ping(Constants.CurrentApiVersion).Result;
+                int ping = Proxies.CoreService.Ping(Constants.RestApiVersion).Result;
                 if (ping > 0)
                 {
                     log.DebugFormat("Ping {0}", ping);
@@ -151,11 +151,11 @@ namespace GuideEnricher
         public static ArgusTV.ServiceProxy.ServerSettings GetServerSettings()
         {
             var serverSettings = new ArgusTV.ServiceProxy.ServerSettings();
-            serverSettings.ServerName = config.getProperty("ftrUrlHost");
+            serverSettings.ServerName = config.GetProperty("ftrUrlHost");
             serverSettings.Transport = ArgusTV.ServiceProxy.ServiceTransport.Http;
-            serverSettings.Port = Convert.ToInt32(config.getProperty("ftrUrlPort"));
-            var password = config.getProperty("ftrUrlPassword");
-            var userName = config.getProperty("ftrUserName");
+            serverSettings.Port = Convert.ToInt32(config.GetProperty("ftrUrlPort"));
+            var password = config.GetProperty("ftrUrlPassword");
+            var userName = config.GetProperty("ftrUserName");
 
             if (!string.IsNullOrEmpty(userName))
             {

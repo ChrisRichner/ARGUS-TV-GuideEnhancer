@@ -76,7 +76,7 @@ namespace GuideEnricher.tvdb
 
         public void DebugEpisodeDump(TvdbSeries tvdbSeries)
         {
-            if (config.getProperty("dumpepisodes").ToUpper() == "TRUE")
+            if (config.GetProperty("dumpepisodes").ToUpper() == "TRUE")
             {
                 this.DumpSeriesEpisodes(tvdbSeries);
             }
@@ -147,7 +147,7 @@ namespace GuideEnricher.tvdb
             TvdbLanguage lang = TvdbLanguage.DefaultLanguage;
             
             List<TvdbLanguage> availableLanguages = this.tvDbService.Languages;
-            string selectedLanguage = this.config.getProperty("TvDbLanguage");
+            string selectedLanguage = this.config.GetProperty("TvDbLanguage");
             
             // if there is a value for TvDbLanguage in the settings, set the right language
             if (!string.IsNullOrEmpty(selectedLanguage))
