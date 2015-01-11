@@ -30,13 +30,6 @@ You can customize the *GuideEnricherService.exe.config* file in the program dire
     <!-- uncomment the following line and set it to your language if you want to use another language than en (de for German, fr for French, ...) -->
     <add key="TvDbLanguage" value="de"/>
     <!-- 
-         serviceUrl:
-         This is the url used for FTR to call teh guideenricher
-         Make sure the port is not used by anything else... i.e.,
-         if you have issues, try changing the port.
-      -->
-    <add key="serviceUrl" value="net.tcp://localhost:49830/GuideEnricher"/>
-    <!-- 
          how long the wait thread waits before doing a run of guide enricher 
          
        -->
