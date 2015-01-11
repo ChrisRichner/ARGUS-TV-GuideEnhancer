@@ -8,12 +8,9 @@ Regardless of the method with which you populate the EPG, you may want to "enric
 ##Getting Started
 If you are going to use the Guide Enricher, follow these steps.
 
-###Pre Requisite
-- You need to have .Net 4.0 installed on the machine that will host the GuideEnricher. You can get the web install here: http://www.microsoft.com/downloads/en/details.aspx?FamilyID=9cfb2d51-5ff4-4491-b0e5-b386f32c0992
-- And the offline installer: http://www.microsoft.com/downloads/en/details.aspx?displaylang=en&FamilyID=0a391abd-25c1-4fc0-919f-b21f31ab88b7
-
 ###Installation
-- Download the installer
+- .NET Framework 4.5 is required (web installer http://go.microsoft.com/fwlink/p/?LinkId=397703 or offline installer http://go.microsoft.com/fwlink/p/?LinkId=397706)
+- Download the [Guide Enricher installer](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/releases "Guide Enricher Releases")
 - Make sure you have ARGUS-TV 2.3.0+ installed and running
 - Run the Guide Enricher installer
 - Only option is path where to install it...
