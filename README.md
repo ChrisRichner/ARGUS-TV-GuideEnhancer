@@ -135,6 +135,6 @@ You can change the priority of the match methods used for episode matching by ch
   ```
   
 ###Troubleshoot
-Logs are written to the *guideenricher.log* file in the program directory. You can view them by simpley double clicking the *guideenricher.log* file in your desired text editor.
+Logs are written to the *guideenricher.log* file in the program directory. You can view them by simply double clicking the *guideenricher.log* file in your desired text editor.
 
 Guide Enricher can also be started as a Console Application by double clicking *GuideEnricherService.exe* after you manually stopped the GuideEnricher Windows Service. The Console outputs all log events in real time.
