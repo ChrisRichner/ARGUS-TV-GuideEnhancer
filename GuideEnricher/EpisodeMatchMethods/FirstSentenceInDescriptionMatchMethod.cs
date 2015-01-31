@@ -6,6 +6,7 @@
     using GuideEnricher.Model;
 
     using TvdbLib.Data;
+    using System;
 
     public class FirstSentenceInDescriptionMatchMethod : MatchMethodBase
     {
@@ -19,19 +20,22 @@
             }
         }
 
-        public override bool Match(GuideEnricherProgram enrichedGuideProgram, List<TvdbEpisode> episodes)
+        public override bool Match(GuideEnricherProgram guideProgram, List<TvdbEpisode> episodes)
         {
-            var match = firstSentence.Match(enrichedGuideProgram.Description);
+            if (guideProgram == null) throw new ArgumentNullException("enrichedGuideProgram");
+            if (IsStringPropertyNull(guideProgram, guideProgram.Description, "Description")) return false;
+            //
+            var match = firstSentence.Match(guideProgram.Description);
             if (match == null || string.IsNullOrEmpty(match.Value))
                 return false;
-            
+
             this.MatchAttempts++;
             var matchedEpisode = episodes.FirstOrDefault(x => x.EpisodeName == match.Value);
             if (matchedEpisode != null)
             {
-                return this.Matched(enrichedGuideProgram, matchedEpisode);
+                return this.Matched(guideProgram, matchedEpisode);
             }
-            
+
             return false;
         }
     }

@@ -6,6 +6,7 @@ namespace GuideEnricher.EpisodeMatchMethods
     using GuideEnricher.Model;
     using log4net;
     using TvdbLib.Data;
+    using System;
 
     public class NoPunctuationMatchMethod : MatchMethodBase
     {
@@ -19,12 +20,9 @@ namespace GuideEnricher.EpisodeMatchMethods
 
         public override bool Match(GuideEnricherProgram guideProgram, List<TvdbEpisode> episodes)
         {
-            if (string.IsNullOrEmpty(guideProgram.SubTitle))
-            {
-                this.log.DebugFormat("[{0}] {1} - {2:MM/dd hh:mm tt} does not have a subtitle", this.MethodName, guideProgram.Title, guideProgram.StartTime);
-                return false;
-            }
-
+            if (guideProgram == null) throw new ArgumentNullException("enrichedGuideProgram");
+            if (IsStringPropertyNull(guideProgram, guideProgram.SubTitle, "SubTitle")) return false;
+            //
             this.MatchAttempts++;
             foreach (var episode in episodes)
             {

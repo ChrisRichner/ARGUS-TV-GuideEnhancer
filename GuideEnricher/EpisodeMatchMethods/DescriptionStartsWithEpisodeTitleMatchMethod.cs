@@ -7,10 +7,11 @@
 
     using TvdbLib.Data;
     using System.Text.RegularExpressions;
+    using System;
 
     public class DescriptionStartsWithEpisodeTitleMatchMethod : MatchMethodBase
     {
-        
+
         public override string MethodName
         {
             get
@@ -19,20 +20,19 @@
             }
         }
 
-        public override bool Match(GuideEnricherProgram enrichedGuideProgram, List<TvdbEpisode> episodes)
+        public override bool Match(GuideEnricherProgram guideProgram, List<TvdbEpisode> episodes)
         {
-            var description = enrichedGuideProgram.Description;
-            if (description == null || string.IsNullOrEmpty(description))
-                return false;
-
-            description = description.ToLower();
+            if (guideProgram == null) throw new ArgumentNullException("enrichedGuideProgram");
+            if (IsStringPropertyNull(guideProgram, guideProgram.Description, "Description")) return false;
+            //
+            var description = guideProgram.Description.ToLower();
             this.MatchAttempts++;
             var matchedEpisode = episodes.FirstOrDefault(x => !string.IsNullOrEmpty(x.EpisodeName) && new Regex(string.Concat("^", x.EpisodeName, "\\W"), RegexOptions.IgnoreCase).IsMatch(description));
             if (matchedEpisode != null)
             {
-                return this.Matched(enrichedGuideProgram, matchedEpisode);
+                return this.Matched(guideProgram, matchedEpisode);
             }
-            
+
             return false;
         }
     }

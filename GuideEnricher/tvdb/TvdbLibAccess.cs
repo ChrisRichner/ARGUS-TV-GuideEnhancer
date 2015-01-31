@@ -62,6 +62,9 @@ namespace GuideEnricher.tvdb
 
         public void EnrichProgram(GuideEnricherProgram existingProgram, TvdbSeries tvdbSeries)
         {
+            if (existingProgram == null) throw new ArgumentNullException("existingProgram");
+            if (tvdbSeries == null) throw new ArgumentNullException("tvdbSeries");
+            //
             log.DebugFormat("Starting lookup for {0} - {1}", existingProgram.Title, existingProgram.SubTitle);
 
             foreach (var matchMethod in this.matchMethods)
