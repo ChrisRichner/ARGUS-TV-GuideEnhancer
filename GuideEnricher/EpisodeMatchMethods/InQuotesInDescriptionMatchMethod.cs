@@ -21,6 +21,7 @@
 
         public override bool Match(GuideEnricherProgram enrichedGuideProgram, List<TvdbEpisode> episodes)
         {
+            if (string.IsNullOrEmpty(enrichedGuideProgram.Description)) return false; 
             var match = quotedSentence.Match(enrichedGuideProgram.Description);
             if (match == null || string.IsNullOrEmpty(match.Value))
                 return false;
