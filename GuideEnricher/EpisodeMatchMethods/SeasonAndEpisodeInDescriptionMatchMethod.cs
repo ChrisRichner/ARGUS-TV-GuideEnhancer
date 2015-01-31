@@ -6,7 +6,8 @@
     using GuideEnricher.Model;
 
     using TvdbLib.Data;
-using System.Text.RegularExpressions;
+    using System.Text.RegularExpressions;
+    using System;
 
     public class SeasonAndEpisodeInDescriptionMatchMethod : MatchMethodBase
     {
@@ -23,19 +24,21 @@ using System.Text.RegularExpressions;
             }
         }
 
-        public override bool Match(GuideEnricherProgram enrichedGuideProgram, List<TvdbEpisode> episodes)
+        public override bool Match(GuideEnricherProgram guideProgram, List<TvdbEpisode> episodes)
         {
+            if (guideProgram == null) throw new ArgumentNullException("enrichedGuideProgram");
+            //
             Match match = null;
             int index = 0;
             do
             {
-                match = regexes[index++].Match(enrichedGuideProgram.Description);
+                match = regexes[index++].Match(guideProgram.Description);
             } while (string.IsNullOrEmpty(match.Value) && index < regexes.Count);
             if (match != null && !string.IsNullOrEmpty(match.Value))
             {
                 this.MatchAttempts++;
-                int seasonNumber=0;
-                int episodeNumber=0;
+                int seasonNumber = 0;
+                int episodeNumber = 0;
                 if (!int.TryParse(match.Groups["season"].Value, out seasonNumber))
                 {
                     // roman literal?
@@ -51,11 +54,11 @@ using System.Text.RegularExpressions;
                     var matchedEpisode = episodes.FirstOrDefault(x => x.SeasonNumber == seasonNumber && x.EpisodeNumber == episodeNumber);
                     if (matchedEpisode != null)
                     {
-                        return this.Matched(enrichedGuideProgram, matchedEpisode);
+                        return this.Matched(guideProgram, matchedEpisode);
                     }
                 }
             }
-            return this.Unmatched(enrichedGuideProgram);
+            return this.Unmatched(guideProgram);
         }
 
         protected int RomanToNumeric(string romanNum)

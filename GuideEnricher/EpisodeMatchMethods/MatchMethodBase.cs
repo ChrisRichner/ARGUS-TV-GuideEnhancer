@@ -7,6 +7,7 @@
     using GuideEnricher.Model;
     using log4net;
     using TvdbLib.Data;
+    using System;
 
     public abstract class MatchMethodBase : IEpisodeMatchMethod
     {
@@ -24,11 +25,14 @@
 
         protected bool Matched(GuideEnricherProgram guideProgram, TvdbEpisode episode)
         {
+            if (guideProgram == null) throw new ArgumentNullException("guideProgram");
+            if (episode == null) throw new ArgumentNullException("episode");
+            //
             this.SuccessfulMatches++;
             guideProgram.EpisodeNumber = episode.EpisodeNumber;
             guideProgram.SeriesNumber = episode.SeasonNumber;
             guideProgram.EpisodeNumberDisplay = Enricher.FormatSeasonAndEpisode(episode.SeasonNumber, episode.EpisodeNumber);
-            
+
             if (bool.Parse(Config.Instance.GetProperty("updateSubtitles")))
             {
                 guideProgram.SubTitle = episode.EpisodeName;
@@ -47,6 +51,16 @@
         protected bool Unmatched(GuideEnricherProgram guideProgram)
         {
             this.log.DebugFormat("[{0}] Could not match {1} - {2}", this.MethodName, guideProgram.Title, guideProgram.SubTitle);
+            return false;
+        }
+
+        protected virtual bool IsStringPropertyNull(GuideEnricherProgram guideProgram, string value, string propertyName)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                this.log.DebugFormat("[{0}] {1} - {2:MM/dd hh:mm tt} does not have a \"{3}\"", this.MethodName, guideProgram.Title, guideProgram.StartTime, propertyName);
+                return true;
+            }
             return false;
         }
     }

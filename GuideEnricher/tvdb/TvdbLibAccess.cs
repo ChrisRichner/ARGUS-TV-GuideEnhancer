@@ -29,7 +29,7 @@ namespace GuideEnricher.tvdb
     {
         private const string MODULE = "GuideEnricher";
         private const string REMOVE_PUNCTUATION = @"[^ a-zA-Z]";
-        
+
         private readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly IConfiguration config;
         private readonly List<IEpisodeMatchMethod> matchMethods;
@@ -62,14 +62,24 @@ namespace GuideEnricher.tvdb
 
         public void EnrichProgram(GuideEnricherProgram existingProgram, TvdbSeries tvdbSeries)
         {
+            if (existingProgram == null) throw new ArgumentNullException("existingProgram");
+            if (tvdbSeries == null) throw new ArgumentNullException("tvdbSeries");
+            //
             log.DebugFormat("Starting lookup for {0} - {1}", existingProgram.Title, existingProgram.SubTitle);
 
             foreach (var matchMethod in this.matchMethods)
             {
-                if (matchMethod.Match(existingProgram, tvdbSeries.Episodes))
+                try
                 {
-                    existingProgram.Matched = true;
-                    break;
+                    if (matchMethod.Match(existingProgram, tvdbSeries.Episodes))
+                    {
+                        existingProgram.Matched = true;
+                        break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    log.ErrorFormat("Matchmethod \"{0}\" failed with exception \"{1}\"", matchMethod.MethodName, e.GetBaseException().Message, e);
                 }
             }
         }
@@ -138,17 +148,17 @@ namespace GuideEnricher.tvdb
                 else if (this.seriesNameMapping[regex].StartsWith("id="))
                 {
                     this.seriesIDMapping.Add(regex, int.Parse(this.seriesNameMapping[regex].Substring(3)));
-                }                
+                }
             }
         }
 
         private TvdbLanguage SetLanguage()
         {
             TvdbLanguage lang = TvdbLanguage.DefaultLanguage;
-            
+
             List<TvdbLanguage> availableLanguages = this.tvDbService.Languages;
             string selectedLanguage = this.config.GetProperty("TvDbLanguage");
-            
+
             // if there is a value for TvDbLanguage in the settings, set the right language
             if (!string.IsNullOrEmpty(selectedLanguage))
             {
@@ -175,7 +185,7 @@ namespace GuideEnricher.tvdb
                 log.DebugFormat("SD-TvDb: Direct mapping: series: {0} id: {1}", seriesName, seriesid);
                 return seriesid;
             }
-            
+
             if (seriesCache.ContainsKey(seriesName))
             {
                 log.DebugFormat("SD-TvDb: Series cache hit: {0} has id: {1}", seriesName, seriesCache[seriesName]);
@@ -217,7 +227,7 @@ namespace GuideEnricher.tvdb
             List<TvdbSearchResult> searchResults = this.tvDbService.SearchSeries(searchSeries, this.language);
 
             log.DebugFormat("SD-TvDb: Search for {0} return {1} results", searchSeries, searchResults.Count);
-            
+
             var seriesWithoutPunctuation = Regex.Replace(searchSeries, REMOVE_PUNCTUATION, string.Empty);
             if (searchResults.Count >= 1)
             {
