@@ -138,3 +138,5 @@ You can change the priority of the match methods used for episode matching by ch
 Logs are written to the *guideenricher.log* file in the program directory. You can view them by simpley double clicking the *guideenricher.log* file in your desired text editor.
 
 Guide Enricher can also be started as a Console Application by double clicking *GuideEnricherService.exe* after you manually stopped the GuideEnricher Windows Service. The Console outputs all log events in real time.
+
+Set dumpepisodes to 'true' in the config file if you want all episodes for a series dumped in the log file make sure logging is set to at least info level
