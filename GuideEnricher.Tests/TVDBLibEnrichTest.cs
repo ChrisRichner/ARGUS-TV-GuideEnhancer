@@ -143,5 +143,27 @@
             enricher.EnrichProgram(lawOrderProgram, series);
             Assert.IsTrue(lawOrderProgram.EpisodeIsEnriched());
         }
+
+        [Test]
+        public void TestAgathaChristiesMarple()
+        {
+            // Arrange
+            var program = new TestProgram("Agatha Christie's Marple", "Murder at the Vicarage", 0, "S01E02");
+            var seriesNameMap = new Dictionary<string, string>(1);
+            seriesNameMap.Add("Agatha Christie's Marple", "id=78895");
+            var mockConfig = new Moq.Mock<IConfiguration>();
+            mockConfig.Setup(x => x.getSeriesNameMap()).Returns(seriesNameMap);
+            mockConfig.Setup(x => x.UpdateMatchedEpisodes).Returns(true);
+            mockConfig.Setup(x => x.UpdateSubtitlesParameter).Returns(true);
+            var tvDbApi = new TvDbService(TestContext.CurrentContext.WorkDirectory, Config.Instance.ApiKey);
+            var enricher = new TvdbLibAccess(mockConfig.Object, EpisodeMatchMethodLoader.GetMatchMethods(), tvDbApi);
+            var series = enricher.GetTvdbSeries(enricher.getSeriesId(program.Title), false);
+            // Act
+            enricher.EnrichProgram(program, series);
+            // Assert
+            Assert.IsTrue(program.EpisodeIsEnriched());
+            program.EpisodeNumber.ShouldEqual(2);
+            program.SeriesNumber.ShouldEqual(1);
+        }
     }
 }
