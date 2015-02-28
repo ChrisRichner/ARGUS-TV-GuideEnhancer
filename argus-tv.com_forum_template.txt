@@ -1,0 +1,16 @@
+Argus-TV Guide Enhancer v2.3.2 available now!
+
+[b]Changelog[/b]
+
+[list]
+[*]Soft refactoring
+[*]Update README.md
+[*]Unit Test TestAgathaChristiesMarple added
+[*]Old unit tests reactivated
+[*]Added remark to README.md to avoid ( #10 Service won't start when seriesMap uses umlauts)[/list]
+
+Download -> https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/releases/tag/v2.3.2
+
+Don't hesitate to contact me in case of issues or questions 
+
+Enjoy
