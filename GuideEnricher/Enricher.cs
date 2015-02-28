@@ -2,25 +2,23 @@
 {
     using ArgusTV.DataContracts;
     using ArgusTV.ServiceProxy;
-    using GuideEnricher.Config;
-    using GuideEnricher.EpisodeMatchMethods;
-    using GuideEnricher.Model;
-    using GuideEnricher.tvdb;
+    using Config;
+    using EpisodeMatchMethods;
+    using Model;
+    using tvdb;
     using log4net;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
     using TvdbLib.Data;
+    using System.Globalization;
 
     public class Enricher
     {
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly List<GuideEnricherProgram> enrichedPrograms;
-        //private readonly ISchedulerService tvSchedulerService;
-        //private readonly IGuideService tvGuideService;
         private readonly IConfiguration config;
-        //private readonly ILogService ftrlogAgent;
         private readonly List<IEpisodeMatchMethod> matchMethods;
         private readonly TvdbLibAccess tvdbLibAccess;
         private readonly Dictionary<string, GuideEnricherSeries> seriesToEnrich;
@@ -31,9 +29,6 @@
         {
             this.config = configuration;
             this.enrichedPrograms = new List<GuideEnricherProgram>();
-            //this.ftrlogAgent = ftrLogService;
-            //this.tvGuideService = tvGuideService;
-            //this.tvSchedulerService = tvSchedulerService;
             this.tvdbLibAccess = tvdbLibAccess;
             this.matchMethods = matchMethods;
             this.seriesToEnrich = new Dictionary<string, GuideEnricherSeries>();
@@ -46,7 +41,14 @@
 
             foreach (var series in this.seriesToEnrich.Values)
             {
-                this.EnrichSeries(series);
+                try
+                {
+                    this.EnrichSeries(series);
+                }
+                catch (Exception e)
+                {
+                    log.Error(string.Format(CultureInfo.CurrentCulture, "Error enriching series {0}", series.Title), e.GetBaseException());
+                }
             }
 
             if (this.enrichedPrograms.Count > 0)
@@ -141,9 +143,9 @@
                 {
                     series.AddAllToFailedPrograms(guideProgram);
                 }
-            } 
+            }
             while (series.PendingPrograms.Count > 0);
-            
+
         }
 
         private void UpdateFTRGuideData()
@@ -173,8 +175,7 @@
 
         private void UpdateForTheRecordPrograms(GuideProgram[] programs)
         {
-            ArgusTV.ServiceProxy.Proxies.GuideService.ImportPrograms(programs, GuideSource.Other);
-            //this.tvGuideService.ImportPrograms(programs, GuideSource.Other);
+            Proxies.GuideService.ImportPrograms(programs, GuideSource.Other);
         }
 
         public static string FormatSeasonAndEpisode(int season, int episode)

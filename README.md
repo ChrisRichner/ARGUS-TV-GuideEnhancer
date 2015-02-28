@@ -21,7 +21,7 @@ If you are going to use the Guide Enricher, follow these steps.
 - After a successful install (hopefully), you will have a windows service called GuideEnricher available
 
 ###Configuration
-You can customize the *GuideEnricherService.exe.config* file in the program directory.
+You can customize the *GuideEnricherService.exe.config* file in the program directory. (When using notepad/editor on Windows, using "Save as" and then left of the save button there is a dropbox "encoding". This should be UTF-8, not ANSI)
 
 #####Application Settings
 ```xml

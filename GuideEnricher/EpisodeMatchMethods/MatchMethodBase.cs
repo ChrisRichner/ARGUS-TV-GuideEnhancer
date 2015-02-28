@@ -3,8 +3,8 @@
     using System.Collections.Generic;
     using System.Reflection;
     using System.Text.RegularExpressions;
-    using GuideEnricher.Config;
-    using GuideEnricher.Model;
+    using Config;
+    using Model;
     using log4net;
     using TvdbLib.Data;
     using System;

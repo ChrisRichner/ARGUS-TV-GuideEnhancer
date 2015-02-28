@@ -12,8 +12,8 @@ namespace GuideEnricher.Tests.MatchMethodsTests
 
     using ArgusTV.DataContracts;
 
-    using GuideEnricher.EpisodeMatchMethods;
-    using GuideEnricher.Model;
+    using EpisodeMatchMethods;
+    using Model;
 
     using NUnit.Framework;
 

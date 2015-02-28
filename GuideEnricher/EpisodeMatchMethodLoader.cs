@@ -3,8 +3,8 @@ namespace GuideEnricher
     using System;
     using System.Collections.Generic;
     using System.Configuration;
-    using GuideEnricher.Config;
-    using GuideEnricher.EpisodeMatchMethods;
+    using Config;
+    using EpisodeMatchMethods;
 
     public class EpisodeMatchMethodLoader
     {

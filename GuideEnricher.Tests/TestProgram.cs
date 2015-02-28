@@ -1,7 +1,7 @@
 namespace GuideEnricher.Tests
 {
     using ArgusTV.DataContracts;
-    using GuideEnricher.Model;
+    using Model;
 
     /// <summary>
     /// Used for unit testing, allows to set the expected result for episode number

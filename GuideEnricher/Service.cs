@@ -2,7 +2,7 @@ namespace GuideEnricher
 {
     using ArgusTV.DataContracts;
     using ArgusTV.ServiceProxy;
-    using GuideEnricher.Config;
+    using Config;
     using GuideEnricher.tvdb;
     using log4net;
     using System;
@@ -11,7 +11,7 @@ namespace GuideEnricher
     using System.Timers;
     using Timer = System.Timers.Timer;
 
-    public class Service
+    public class Service : IDisposable
     {
         private const string MODULE = "GuideEnricher";
 
@@ -79,7 +79,7 @@ namespace GuideEnricher
                 log.Debug("Trying to connect to Argus TV");
 
                 ArgusTV.ServiceProxy.ServerSettings serverSettings = GetServerSettings();
-                if (ArgusTV.ServiceProxy.Proxies.Initialize(serverSettings))
+                if (Proxies.Initialize(serverSettings))
                 {
                     Proxies.LogService.LogMessage(MODULE, LogSeverity.Information, "GuideEnricher successfully connected");
                     log.Info("Successfully connected to Argus TV");
@@ -125,7 +125,6 @@ namespace GuideEnricher
                 var matchMethods = EpisodeMatchMethodLoader.GetMatchMethods();
                 var tvDbApi = new TvDbService(config.CacheFolder, config.ApiKey);
                 var tvdbLibAccess = new TvdbLibAccess(config, matchMethods, tvDbApi);
-                //var enricher = new Enricher(config, ftrlogAgent, tvGuideServiceAgent, tvSchedulerServiceAgent, tvdbLibAccess, matchMethods);
                 var enricher = new Enricher(config, tvdbLibAccess, matchMethods);
                 enricher.EnrichUpcomingPrograms();
             }
@@ -172,7 +171,35 @@ namespace GuideEnricher
         internal static bool InitializeConnectionToArgusTV()
         {
             ArgusTV.ServiceProxy.ServerSettings serverSettings = Service.GetServerSettings();
-            return ArgusTV.ServiceProxy.Proxies.Initialize(serverSettings, false);
+            return Proxies.Initialize(serverSettings, false);
         }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    if (this.eventListener != null) eventListener.Dispose();
+                    // TODO: dispose managed state (managed objects).          
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // TODO: set large fields to null.
+
+                disposedValue = true;
+            }
+        }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+        }
+        #endregion
     }
 }
