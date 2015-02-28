@@ -5,17 +5,33 @@
 
 Regardless of the method with which you populate the EPG, you may want to "enrich" your guide data to add Season and Episode numbers (SxxExx). This "enrich"-ing is useful for [XBMC/Kodi](http://www.kodi.tv "Kodi") or [MediaPortal](http://www.team-mediaportal.com/ "") plugin TVSeries that automatically download episode information, backdrops, ratings, etc. By enriching your guide data, you can automatically have the SxxExx information in your file names and thus have TVSeries register your recordings with no manual intervention.
 
-##Contributing
-Contributions are welcome; fork ARGUS-TV-GuideEnhancer and submit a pull request. If your looking for something to do you can always check out [issues page](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/issues)
-to see what features or bugs need some work.  If you have an awesome idea feel free to submit an [issue](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/issues/new), but pull requests are best.
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+
+- [ARGUS-TV-GuideEnhancer](#argus-tv-guideenhancer)
+	- [Getting Started](#getting-started)
+		- [Requirements](#requirements)
+		- [Installation](#installation)
+		- [Configuration](#configuration)
+				- [Application Settings](#application-settings)
+				- [Series Mapping](#series-mapping)
+				- [Match Methods](#match-methods)
+				- [Logging](#logging)
+		- [Troubleshoot](#troubleshoot)
+	- [Contributing](#contributing)
+	- [Questions or need help?](#questions-or-need-help?)
 
 ##Getting Started
 If you are going to use the Guide Enricher, follow these steps.
 
-###Installation
+Caution: This version of ARGUS-TV-GuideEnhancer is only compatible with ARGUS-TV Version 2.3.0 and later. In case you're using an older ARGUS-TV Version please [visit this site](https://code.google.com/p/ftr-guide-enhancer/).
+
+
+###Requirements
 - .NET Framework 4.5 is required (web installer http://go.microsoft.com/fwlink/p/?LinkId=397703 or offline installer http://go.microsoft.com/fwlink/p/?LinkId=397706)
+- Make sure you have [ARGUS-TV 2.3.0+](http://www.argus-tv.com/forum/viewforum.php?f=67) installed and running
+
+###Installation
 - Download the [Guide Enricher installer](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/releases "Guide Enricher Releases")
-- Make sure you have ARGUS-TV 2.3.0+ installed and running
 - Run the Guide Enricher installer
 - Only option is path where to install it...
 - After a successful install (hopefully), you will have a windows service called GuideEnricher available
@@ -187,3 +203,10 @@ Logs are written to the *guideenricher.log* file in the program directory. You c
 Guide Enricher can also be started as a Console Application by double clicking *GuideEnricherService.exe* after you manually stopped the GuideEnricher Windows Service. The Console outputs all log events in real time.
 
 Set dumpepisodes to 'true' in the config file if you want all episodes for a series dumped to the logger. Please make sure logging is set to at least info level. Restart the service for changes to take effect.
+
+##Contributing
+Contributions are welcome; fork ARGUS-TV-GuideEnhancer and submit a pull request. If your looking for something to do you can always check out [issues page](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/issues)
+to see what features or bugs need some work.  If you have an awesome idea feel free to submit an [issue](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/issues/new), but pull requests are best.
+
+##Questions or need help?
+Check out the **[Talk to us](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/wiki/Talk-to-us)** page on our wiki.
