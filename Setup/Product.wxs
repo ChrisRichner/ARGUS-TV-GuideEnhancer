@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-  <Product Id="*" Name="Guide Enricher" Language="1033" Version="2.3.1.0" Manufacturer="Chris Richner" UpgradeCode="BC0E21F0-3370-4366-A599-D6BB8BA29D96">
+  <Product Id="*" Name="Guide Enricher" Language="1033" Version="2.3.2.0" Manufacturer="Chris Richner" UpgradeCode="BC0E21F0-3370-4366-A599-D6BB8BA29D96">
     <Package Description="Fetches season and episode information from TheTVDB for ARGUS-TV's guide" Manufacturer="Chris Richner" InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <Media Id="1" Cabinet="contents.cab" EmbedCab="yes" CompressionLevel="high" />
@@ -23,7 +23,7 @@
       -->
     <Property Id="WIXUI_INSTALLDIR">INSTALLDIR</Property>
     <UIRef Id="WixUI_InstallDir" />
-    <Upgrade Id="B704E703-9938-45E0-B637-4C37E8835860">
+    <Upgrade Id="97D85E01-EB93-4B0F-A01B-3A3F09D0D116">
       <UpgradeVersion OnlyDetect="no" Minimum="0.1" Property="NEWFILES">
       </UpgradeVersion>
     </Upgrade>
