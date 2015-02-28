@@ -5,6 +5,10 @@
 
 Regardless of the method with which you populate the EPG, you may want to "enrich" your guide data to add Season and Episode numbers (SxxExx). This "enrich"-ing is useful for [XBMC/Kodi](http://www.kodi.tv "Kodi") or [MediaPortal](http://www.team-mediaportal.com/ "") plugin TVSeries that automatically download episode information, backdrops, ratings, etc. By enriching your guide data, you can automatically have the SxxExx information in your file names and thus have TVSeries register your recordings with no manual intervention.
 
+##Contributing
+Contributions are welcome; fork ARGUS-TV-GuideEnhancer and submit a pull request. If your looking for something to do you can always check out [issues page](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/issues)
+to see what features or bugs need some work.  If you have an awesome idea feel free to submit an [issue](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/issues/new), but pull requests are best.
+
 ##Getting Started
 If you are going to use the Guide Enricher, follow these steps.
 
@@ -133,10 +137,53 @@ You can change the priority of the match methods used for episode matching by ch
     </MatchMethods>
   </MatchMethodsSection>
   ```
+#####Logging
+Logs are written to the *guideenricher.log* file in the program directory. You can view them by simpley double clicking the *guideenricher.log* file in your desired text editor. To change the [log level](http://logging.apache.org/log4net/release/sdk/log4net.Core.Level.html) you must set the root level to one of the following values
+- ALL
+- DEBUG
+- INFO
+- WARN
+- ERROR
+- FATAL
+- OFF
+```xml
+<log4net>
+    <appender name="RollingLogFileAppender" type="log4net.Appender.RollingFileAppender">
+      <file value="guideenricher.log"/>
+      <appendToFile value="true"/>
+      <maxSizeRollBackups value="10"/>
+      <maximumFileSize value="5MB"/>
+      <rollingStyle value="Size"/>
+      <staticLogFileName value="true"/>
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%date{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger - %message%newline"/>
+      </layout>
+    </appender>
+    <appender name="Console" type="log4net.Appender.ConsoleAppender">
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%message%newline"/>
+      </layout>
+    </appender>
+    <root>
+      <level value="DEBUG"/>
+      <appender-ref ref="RollingLogFileAppender"/>
+      <appender-ref ref="Console"/>
+    </root>
+    <!-- 
+      If you wish to overide logging level for specific class or namespace you can do so like the following
+      <logger name="GuideEnricher.EpisodeMatchMethods.AbsoluteEpisodeNumberMatchMethod">
+        <level value="warn" />
+      </logger>
+      
+      or
+      <logger name="GuideEnricher.EpisodeMatchMethods">
+        <level value="error" />
+      </logger>
+    -->
+  </log4net>
+```
   
 ###Troubleshoot
-Logs are written to the *guideenricher.log* file in the program directory. You can view them by simply double clicking the *guideenricher.log* file in your desired text editor.
-
 Guide Enricher can also be started as a Console Application by double clicking *GuideEnricherService.exe* after you manually stopped the GuideEnricher Windows Service. The Console outputs all log events in real time.
 
-Set dumpepisodes to 'true' in the config file if you want all episodes for a series dumped in the log file make sure logging is set to at least info level
+Set dumpepisodes to 'true' in the config file if you want all episodes for a series dumped to the logger. Please make sure logging is set to at least info level. Restart the service for changes to take effect.
