@@ -7,18 +7,18 @@ Regardless of the method with which you populate the EPG, you may want to "enric
 
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
-- [ARGUS-TV-GuideEnhancer](#)
-	- [Contributing](#)
-	- [Questions or need help?](#)
-	- [Getting Started](#)
-		- [Requirements](#)
-		- [Installation](#)
-		- [Configuration](#)
-				- [Application Settings](#)
-				- [Series Mapping](#)
-				- [Match Methods](#)
-				- [Logging](#)
-		- [Troubleshoot](#)
+- [ARGUS-TV-GuideEnhancer](#ARGUS-TV-GuideEnhancer)
+	- [Contributing](#Contributing)
+	- [Questions or need help?](#Questions-or-need-help?)
+	- [Getting Started](#Getting-Started)
+		- [Requirements](#Requirements)
+		- [Installation](#Installation)
+		- [Configuration](#Configuration)
+				- [Application Settings](#Application-Settings)
+				- [Series Mapping](#Series-Mapping)
+				- [Match Methods](#Match-Methods)
+				- [Logging](#Logging)
+		- [Troubleshoot](#Troubleshoot)
 
 ##Contributing
 Contributions are welcome; fork ARGUS-TV-GuideEnhancer and submit a pull request. If your looking for something to do you can always check out [issues page](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/issues)
