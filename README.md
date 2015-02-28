@@ -9,13 +9,21 @@ Regardless of the method with which you populate the EPG, you may want to "enric
 Contributions are welcome; fork ARGUS-TV-GuideEnhancer and submit a pull request. If your looking for something to do you can always check out [issues page](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/issues)
 to see what features or bugs need some work.  If you have an awesome idea feel free to submit an [issue](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/issues/new), but pull requests are best.
 
+##Questions or need help?
+Check out the **[Talk to us](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/wiki/Talk-to-us)** page on our wiki.
+
 ##Getting Started
 If you are going to use the Guide Enricher, follow these steps.
 
-###Installation
+Caution: This version of ARGUS-TV-GuideEnhancer is only compatible with ARGUS-TV Version 2.3.0 and later. In case you're using an older ARGUS-TV Version please [visit this site](https://code.google.com/p/ftr-guide-enhancer/).
+
+
+###Requirements
 - .NET Framework 4.5 is required (web installer http://go.microsoft.com/fwlink/p/?LinkId=397703 or offline installer http://go.microsoft.com/fwlink/p/?LinkId=397706)
+- Make sure you have [ARGUS-TV 2.3.0+](http://www.argus-tv.com/forum/viewforum.php?f=67) installed and running
+
+###Installation
 - Download the [Guide Enricher installer](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/releases "Guide Enricher Releases")
-- Make sure you have ARGUS-TV 2.3.0+ installed and running
 - Run the Guide Enricher installer
 - Only option is path where to install it...
 - After a successful install (hopefully), you will have a windows service called GuideEnricher available
