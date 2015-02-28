@@ -3,8 +3,8 @@
     using System;
     using System.Collections.Generic;
 
-    using GuideEnricher.Config;
-    using GuideEnricher.EpisodeMatchMethods;
+    using Config;
+    using EpisodeMatchMethods;
     using GuideEnricher.tvdb;
 
     using log4net.Config;
@@ -12,6 +12,8 @@
     using NUnit.Framework;
 
     using Should;
+    using System.Globalization;
+
 
     /// <summary>
     /// Use this class to test actual episodes against TVDB
@@ -72,11 +74,11 @@
                     enricher.EnrichProgram(testProgram, series);
                     if (testProgram.EpisodeNumberDisplay == testProgram.ExpectedEpisodeNumberDisplay)
                     {
-                        Console.WriteLine(string.Format("Correctly matched {0} - {1}", testProgram.Title, testProgram.EpisodeNumberDisplay));
+                        Console.WriteLine(string.Format(CultureInfo.CurrentCulture, "Correctly matched {0} - {1}", testProgram.Title, testProgram.EpisodeNumberDisplay));
                     }
                     else
                     {
-                        Console.WriteLine(string.Format("Unable to match {0} - {1}", testProgram.Title, testProgram.SubTitle));
+                        Console.WriteLine(string.Format(CultureInfo.CurrentCulture, "Unable to match {0} - {1}", testProgram.Title, testProgram.SubTitle));
                         pass = false;
                     }
 
@@ -84,7 +86,7 @@
                 catch (Exception exception)
                 {
                     pass = false;
-                    Console.WriteLine(string.Format("Couldn't match {0} - {1}", testProgram.Title, testProgram.SubTitle));
+                    Console.WriteLine(string.Format(CultureInfo.CurrentCulture, "Couldn't match {0} - {1}", testProgram.Title, testProgram.SubTitle));
                     Console.WriteLine(exception.Message);
                 }
             }

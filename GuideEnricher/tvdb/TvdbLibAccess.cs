@@ -12,13 +12,10 @@ namespace GuideEnricher.tvdb
     using System.Collections.Generic;
     using System.Reflection;
     using System.Text.RegularExpressions;
-    using GuideEnricher.Config;
-    using GuideEnricher.EpisodeMatchMethods;
-    using GuideEnricher.Exceptions;
-    using GuideEnricher.Model;
+    using Config;
+    using EpisodeMatchMethods;
+    using Model;
     using log4net;
-    using TvdbLib;
-    using TvdbLib.Cache;
     using TvdbLib.Data;
     using TvdbLib.Exceptions;
 
@@ -100,26 +97,18 @@ namespace GuideEnricher.tvdb
 
         private TvdbSeries GetTvdbSeries(int seriesId, TvdbSeries tvdbSeries, bool forceRefresh)
         {
-            bool callSuccessful = false;
-            int attemptNumber = 0;
-            while (attemptNumber++ < 3 && !callSuccessful)
+            try
             {
-                try
+                tvdbSeries = this.tvDbService.GetSeries(seriesId, this.language, true, false, false);
+                if (forceRefresh)
                 {
-                    tvdbSeries = this.tvDbService.GetSeries(seriesId, this.language, true, false, false);
-                    if (forceRefresh)
-                    {
-                        tvdbSeries = this.tvDbService.ForceReload(tvdbSeries, true, false, false);
-                    }
-
-                    callSuccessful = true;
-                }
-                catch (TvdbException tvdbException)
-                {
-                    this.log.Debug("TVDB Error getting series", tvdbException);
+                    tvdbSeries = this.tvDbService.ForceReload(tvdbSeries, true, false, false);
                 }
             }
-
+            catch (TvdbException tvdbException)
+            {
+                this.log.Debug("TVDB Error getting series", tvdbException);
+            }
             return tvdbSeries;
         }
 

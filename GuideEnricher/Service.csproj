@@ -126,10 +126,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config\Config.cs" />
-    <Compile Include="Config\MatchMethodElement.cs" />
-    <Compile Include="Config\MatchMethodCollection.cs" />
-    <Compile Include="Config\MatchMethodsSection.cs" />
+    <Compile Include="Configuration\Config.cs" />
+    <Compile Include="Configuration\MatchMethodElement.cs" />
+    <Compile Include="Configuration\MatchMethodCollection.cs" />
+    <Compile Include="Configuration\MatchMethodsSection.cs" />
     <Compile Include="EpisodeMatchMethods\AirDateMatchMethod.cs" />
     <Compile Include="EpisodeMatchMethods\DescriptionStartsWithEpisodeTitleMatchMethod.cs" />
     <Compile Include="EpisodeMatchMethods\InQuotesInDescriptionMatchMethod.cs" />
@@ -143,21 +143,18 @@
     <Compile Include="EpisodeMatchMethods\MatchMethodBase.cs" />
     <Compile Include="EpisodeMatchMethods\NoPunctuationMatchMethod.cs" />
     <Compile Include="EpisodeMatchMethods\RemoveCommonWordsMatchMethod.cs" />
-    <Compile Include="exception\DataEnricherException.cs" />
     <Compile Include="Enricher.cs" />
-    <Compile Include="Config\IConfiguration.cs" />
+    <Compile Include="Configuration\IConfiguration.cs" />
     <Compile Include="EpisodeMatchMethods\EpisodeTitleMatchMethod.cs" />
     <Compile Include="EpisodeMatchMethods\IEpisodeMatchMethod.cs" />
     <Compile Include="Model\GuideEnricherSeries.cs" />
     <Compile Include="Model\GuideProgramEqualityComparer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Config\SeriesNameMap.cs" />
-    <Compile Include="Config\SeriesNameMapCollection.cs" />
-    <Compile Include="Config\SeriesNameMapsSection.cs" />
+    <Compile Include="Configuration\SeriesNameMap.cs" />
+    <Compile Include="Configuration\SeriesNameMapCollection.cs" />
+    <Compile Include="Configuration\SeriesNameMapsSection.cs" />
     <Compile Include="Service.cs" />
-    <Compile Include="exception\NoSeriesMatchException.cs" />
-    <Compile Include="exception\SeriesIgnoredException.cs" />
     <Compile Include="tvdb\ITvDbService.cs" />
     <Compile Include="tvdb\TvdbLibAccess.cs" />
     <Compile Include="tvdb\TvDbService.cs" />

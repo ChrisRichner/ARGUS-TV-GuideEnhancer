@@ -1,9 +1,7 @@
 namespace GuideEnricher.EpisodeMatchMethods
 {
     using System.Collections.Generic;
-    using System.Reflection;
-    using GuideEnricher.Model;
-    using log4net;
+    using Model;
     using TvdbLib.Data;
     using System.Linq;
 

@@ -2,7 +2,7 @@ namespace GuideEnricher.Tests
 {
 
     using ArgusTV.DataContracts;
-    using GuideEnricher.Model;
+    using Model;
     using NUnit.Framework;
     using Should;
 

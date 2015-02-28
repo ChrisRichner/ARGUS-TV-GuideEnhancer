@@ -40,13 +40,32 @@
             this.tvdbHandler.InitCache();
         }
 
-        public void Dispose()
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
         {
-            if (this.tvdbHandler != null)
+            if (!disposedValue)
             {
-                this.tvdbHandler.CloseCache();
+                if (disposing)
+                {
+                    if (this.tvdbHandler != null)
+                    {
+                        this.tvdbHandler.CloseCache();
+                    }
+                }                
+                disposedValue = true;
             }
         }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+        }
+        #endregion
+
     }
 
     public static class Retry
