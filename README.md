@@ -8,8 +8,6 @@ Regardless of the method with which you populate the EPG, you may want to "enric
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
 - [ARGUS-TV-GuideEnhancer](#argus-tv-guideenhancer)
-	- [Contributing](#contributing)
-	- [Questions or need help?](#questions-or-need-help?)
 	- [Getting Started](#getting-started)
 		- [Requirements](#requirements)
 		- [Installation](#installation)
@@ -19,13 +17,8 @@ Regardless of the method with which you populate the EPG, you may want to "enric
 				- [Match Methods](#match-methods)
 				- [Logging](#logging)
 		- [Troubleshoot](#troubleshoot)
-
-##Contributing
-Contributions are welcome; fork ARGUS-TV-GuideEnhancer and submit a pull request. If your looking for something to do you can always check out [issues page](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/issues)
-to see what features or bugs need some work.  If you have an awesome idea feel free to submit an [issue](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/issues/new), but pull requests are best.
-
-##Questions or need help?
-Check out the **[Talk to us](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/wiki/Talk-to-us)** page on our wiki.
+	- [Contributing](#contributing)
+	- [Questions or need help?](#questions-or-need-help?)
 
 ##Getting Started
 If you are going to use the Guide Enricher, follow these steps.
@@ -210,3 +203,10 @@ Logs are written to the *guideenricher.log* file in the program directory. You c
 Guide Enricher can also be started as a Console Application by double clicking *GuideEnricherService.exe* after you manually stopped the GuideEnricher Windows Service. The Console outputs all log events in real time.
 
 Set dumpepisodes to 'true' in the config file if you want all episodes for a series dumped to the logger. Please make sure logging is set to at least info level. Restart the service for changes to take effect.
+
+##Contributing
+Contributions are welcome; fork ARGUS-TV-GuideEnhancer and submit a pull request. If your looking for something to do you can always check out [issues page](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/issues)
+to see what features or bugs need some work.  If you have an awesome idea feel free to submit an [issue](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/issues/new), but pull requests are best.
+
+##Questions or need help?
+Check out the **[Talk to us](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/wiki/Talk-to-us)** page on our wiki.
