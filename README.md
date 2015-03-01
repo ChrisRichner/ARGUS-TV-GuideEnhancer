@@ -19,6 +19,7 @@ Regardless of the method with which you populate the EPG, you may want to "enric
 		- [Troubleshoot](#troubleshoot)
 	- [Contributing](#contributing)
 	- [Questions or need help?](#questions-or-need-help?)
+	- [Frequently asked questions (FAQ)](#faq)
 
 ##Getting Started
 If you are going to use the Guide Enricher, follow these steps.
@@ -210,3 +211,7 @@ to see what features or bugs need some work.  If you have an awesome idea feel f
 
 ##Questions or need help?
 Check out the **[Talk to us](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/wiki/Talk-to-us)** page on our wiki.
+
+##FAQ
+####Can this be used in combination with WG+?
+Yes, WebGrab+ works perfectly combined with ARGUS-TV-GuideEnhancer.
