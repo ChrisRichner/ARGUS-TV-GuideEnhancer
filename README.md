@@ -18,8 +18,8 @@ Regardless of the method with which you populate the EPG, you may want to "enric
 				- [Logging](#logging)
 		- [Troubleshoot](#troubleshoot)
 	- [Contributing](#contributing)
-	- [Questions or need help?](#questions-or-need-help?)
 	- [Frequently asked questions (FAQ)](#faq)
+	- [Questions or need help?](#questions-or-need-help?)
 
 ##Getting Started
 If you are going to use the Guide Enricher, follow these steps.
@@ -209,9 +209,9 @@ Set dumpepisodes to 'true' in the config file if you want all episodes for a ser
 Contributions are welcome; fork ARGUS-TV-GuideEnhancer and submit a pull request. If your looking for something to do you can always check out [issues page](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/issues)
 to see what features or bugs need some work.  If you have an awesome idea feel free to submit an [issue](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/issues/new), but pull requests are best.
 
-##Questions or need help?
-Check out the **[Talk to us](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/wiki/Talk-to-us)** page on our wiki.
-
 ##FAQ
 ####Can this be used in combination with WG+?
 Yes, WebGrab+ works perfectly combined with ARGUS-TV-GuideEnhancer.
+
+##Questions or need help?
+Check out the **[Talk to us](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/wiki/Talk-to-us)** page on our wiki.
