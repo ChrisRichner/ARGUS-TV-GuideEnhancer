@@ -19,7 +19,7 @@ Regardless of the method with which you populate the EPG, you may want to "enric
 		- [Troubleshoot](#troubleshoot)
 	- [Contributing](#contributing)
 	- [Frequently asked questions (FAQ)](#faq)
-	- [Questions or need help?](#questions-or-need-help?)
+	- [Questions or need help?](#questions-or-need-help)
 
 ##Getting Started
 If you are going to use the Guide Enricher, follow these steps.
