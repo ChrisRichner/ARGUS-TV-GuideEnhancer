@@ -18,6 +18,7 @@ namespace GuideEnricher.tvdb
     using log4net;
     using TvdbLib.Data;
     using TvdbLib.Exceptions;
+    using System.Linq;
 
     /// <summary>
     /// Description of TvdbLibAccess.
@@ -222,7 +223,9 @@ namespace GuideEnricher.tvdb
             {
                 for (int i = 0; i < searchResults.Count; i++)
                 {
-                    if (seriesWithoutPunctuation.Equals(Regex.Replace(searchResults[i].SeriesName, REMOVE_PUNCTUATION, string.Empty), StringComparison.InvariantCultureIgnoreCase))
+                    var sn = new List<string> { Regex.Replace(searchResults[i].SeriesName, REMOVE_PUNCTUATION, string.Empty) };
+                    sn.AddRange(searchResults[i].AliasNames.Select(x => Regex.Replace(x, REMOVE_PUNCTUATION, string.Empty)));
+                    if (sn.Any(x => x.Equals(seriesWithoutPunctuation, StringComparison.InvariantCultureIgnoreCase)))
                     {
                         var seriesId = searchResults[i].Id;
                         log.DebugFormat("SD-TvDb: series: {0} id: {1}", searchSeries, seriesId);
