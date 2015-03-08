@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <!--
+      This section allows you to create mappings from names in the 
+      guide data (i.e., SchedulesDirect) to names in thetvdb.com.
+
+      You need this because the names are not always equal.  It comes
+      in handy for shows that have the same name a really old shows....
+      Like Chase on NBC needs to have a mapping to Chase (2010) to help 
+      this tool find the proper series.
+
+      Use the logs to help debug.
+
+      If a regular name mapping does not work, you can use thetvdb.com
+      show ID as a direct map as shown with $..! My Dad Says below.
+
+      Also, you can use regular expressions to handle schedulesDirectNaming
+      problems for series names that occasionally have too much information 
+      in it.  The third example shows the use of a regex to tvdb.com name.
+      The fourth example shows using a regex to tvdb.com id
+
+      For shows that you record but know you're not going to find reliable
+      data on thetvdb.com, you can just choose to ignore them.  See 
+      the fifth entry for an example.  The tvdbComName still needs to be there
+      for the XML parser, so just make it an empty string like the example.
+
+    <seriesMap schedulesDirectName="$..! My Dad Says" tvdbComName="id=164951" />
+    <seriesMap schedulesDirectName="regex=Boston Leg.*" tvdbComName="Boston Legal" />
+    <seriesMap schedulesDirectName="regex=Boston Lega.*" tvdbComName="id=74058" />
+    <seriesMap schedulesDirectName="regex=The Daily Show.*" tvdbComName="" ignore="true" />
+   -->
+  <seriesMapping>
+    <seriesMap schedulesDirectName="Star Trek: Enterprise" tvdbComName="id=73893"/>
+    <seriesMap schedulesDirectName="Flashpoint" tvdbComName="id=82438"/>
+    <seriesMap schedulesDirectName="Dr. House" tvdbComName="id=73255"/>
+    <seriesMap schedulesDirectName="Castle" tvdbComName="" ignore="true"/>
+    <seriesMap schedulesDirectName="Monk" tvdbComName="" ignore="true"/>
+  </seriesMapping>
+  <!--
+    Ignores which collect recommendations &/ series mappings to (probably) distinct IDs.
+  -->
+  <ignores>
+    <seriesMap schedulesDirectName="Star Trek: Enterprise" tvdbComName="id=73893"/>
+  </ignores>
+</configuration>

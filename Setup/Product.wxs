@@ -6,6 +6,7 @@
         <Media Id="1" Cabinet="contents.cab" EmbedCab="yes" CompressionLevel="high" />
         <Feature Id="Complete" Title="Guide Enricher Install" Description="Main entry point for installer" Level="1">
             <ComponentRef Id="License" />
+			<ComponentRef Id="SeriesMapping" />
             <ComponentRef Id="ServiceExe" />
             <ComponentRef Id="ServiceExeConfig" />
             <ComponentRef Id="Tvdblibdll" />
@@ -49,6 +50,9 @@
                 <Directory Id="INSTALLDIR" Name="Guide Enricher">
                     <Component Id="License" Guid="16ED3327-230C-4A7B-A593-6684E27D71FF" DiskId="1">
                         <File Id="LicenseFile" Name="license.rtf" Source="license.rtf" />
+                    </Component>
+					  <Component Id="SeriesMapping" Guid="ED332716-230C-4A7B-A593-6684E27D71FF" DiskId="1">
+                        <File Id="SeriesMapping" Name="seriesMapping.xml" Source="seriesMapping.xml" />
                     </Component>
                     <Component Id="ServiceExe" Guid="BB06A3CF-236E-4612-B23D-671210C4270D">
                         <File Id="ServiceExe" Name="GuideEnricherService.exe" Source="..\GuideEnricher\bin\Release\GuideEnricherService.exe" KeyPath="yes" />
