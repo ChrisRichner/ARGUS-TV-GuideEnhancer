@@ -12,7 +12,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{62DF0FCB-5872-4E78-B007-2D05BE2E3DD0}"
 	ProjectSection(SolutionItems) = preProject
 		argus-tv.com_forum_template.txt = argus-tv.com_forum_template.txt
-		Setup\Releases\GuideEnricherInstall-v2.3.0.42695_B704E703-9938-45E0-B637-4C37E8835860.msi = Setup\Releases\GuideEnricherInstall-v2.3.0.42695_B704E703-9938-45E0-B637-4C37E8835860.msi
 		Setup\seriesMapping,xml = Setup\seriesMapping,xml
 		References\TvdbLib.dll = References\TvdbLib.dll
 		References\TvdbLib.pdb = References\TvdbLib.pdb
