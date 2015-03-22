@@ -135,6 +135,8 @@
 		<seriesMap schedulesDirectName="Das Jenke-Experiment" tvdbComName="id=268182" />
 		<!-- Fuchs und Gans / Heiter bis tödlich -->
 		<seriesMap schedulesDirectName="Fuchs und Gans" tvdbComName="id=262556" />
+		<!-- Justice - Nicht schuldig! -->
+		<seriesMap schedulesDirectName="regex=Justice.*" tvdbComName="id=79345" />
 		<!-- Lanfeust - The Quest -->
 		<seriesMap schedulesDirectName="Lanfeust" tvdbComName="id=276127" />
 		<!-- Lewis - Der Oxford-Krimi -->
