@@ -138,6 +138,7 @@ If you see errors for series that cannot be found, take a look at the *GuideEnri
     <seriesMap schedulesDirectName="Monk" tvdbComName="" ignore="true"/>
   </seriesMapping>
 ```
+[seriesMapping.xml](/Setup/seriesMapping.xml) contains a collection of seriesMapping entries for you to get easily started.
 #####Match Methods
 You can change the priority of the match methods used for episode matching by changing the order. You can also comment out a method if you wish to disable it
 ```xml
@@ -214,6 +215,8 @@ to see what features or bugs need some work.  If you have an awesome idea feel f
 ##FAQ
 ####Can this be used in combination with WG+?
 Yes, WebGrab+ works perfectly combined with ARGUS-TV-GuideEnhancer.
+####Do you provide cut&paste ready series mappings?
+Yes, [seriesMapping.xml](/Setup/seriesMapping.xml) contains a collection of seriesMapping entries for you to get easily started.
 
 ##Questions or need help?
 Check out the **[Talk to us](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/wiki/Talk-to-us)** page on our wiki.
