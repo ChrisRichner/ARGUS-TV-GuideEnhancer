@@ -169,14 +169,14 @@ namespace GuideEnricher.tvdb
                 return 0;
             }
 
-            if (this.seriesIDMapping.ContainsKey(seriesName))
+            if (this.seriesIDMapping.Keys.Contains(seriesName, StringComparer.InvariantCultureIgnoreCase))
             {
                 var seriesid = this.seriesIDMapping[seriesName];
                 log.DebugFormat("SD-TvDb: Direct mapping: series: {0} id: {1}", seriesName, seriesid);
                 return seriesid;
             }
 
-            if (seriesCache.ContainsKey(seriesName))
+            if (seriesCache.Keys.Contains(seriesName, StringComparer.InvariantCultureIgnoreCase))
             {
                 log.DebugFormat("SD-TvDb: Series cache hit: {0} has id: {1}", seriesName, seriesCache[seriesName]);
                 return seriesCache[seriesName];
@@ -248,7 +248,7 @@ namespace GuideEnricher.tvdb
                 return false;
             }
 
-            if (this.seriesIgnore.Contains(seriesName))
+            if (this.seriesIgnore.Contains(seriesName, StringComparer.InvariantCultureIgnoreCase))
             {
                 this.log.DebugFormat("{0}: Series {1} is ignored", MODULE, seriesName);
                 return true;
@@ -263,7 +263,7 @@ namespace GuideEnricher.tvdb
                 return false;
             }
 
-            return this.seriesNameMapping.ContainsKey(seriesName);
+            return this.seriesNameMapping.Keys.Contains(seriesName, StringComparer.InvariantCultureIgnoreCase);
         }
     }
 }
