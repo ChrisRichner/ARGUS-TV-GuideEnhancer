@@ -35,7 +35,6 @@ namespace GuideEnricher
             try
             {
                 log.Info("Starting");
-                //ForTheRecordListener.CreateServiceHost(config.getProperty("serviceUrl")).Open();
                 eventListener.StartEventListenerTask();
 
                 ftrConnectionTimer = new Timer(500) { AutoReset = false };
@@ -126,7 +125,7 @@ namespace GuideEnricher
                 var tvDbApi = new TvDbService(config.CacheFolder, config.ApiKey);
                 var tvdbLibAccess = new TvdbLibAccess(config, matchMethods, tvDbApi);
                 var enricher = new Enricher(config, tvdbLibAccess, matchMethods);
-                enricher.EnrichUpcomingPrograms();
+                enricher.EnrichUpcomingProgramsAsync().Wait();
             }
             catch (Exception exception)
             {
