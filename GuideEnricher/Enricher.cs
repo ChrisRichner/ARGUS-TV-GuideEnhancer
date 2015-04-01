@@ -71,6 +71,9 @@
         private async Task AddUpcomingProgramsAsync(ScheduleType scheduleType)
         {
             var schedules = await Proxies.SchedulerService.GetAllSchedules(ChannelType.Television, scheduleType);
+            // EpisodeDisplayname must have S01E01 format
+            var episodeDataValidRegEx = new System.Text.RegularExpressions.Regex(@"S\d\dE\d\d");
+            //
             foreach (var scheduleSummary in schedules)
             {
                 if (!scheduleSummary.IsActive) continue;
@@ -89,8 +92,6 @@
                          };
                 schedule.Rules.RemoveAll(x => filtersToRemove.Contains(x.Type));
                 //
-                // EpisodeDisplayname must have S01E01 format
-                var episodeDataValidRegEx = new System.Text.RegularExpressions.Regex(@"S\d\dE\d\d");
                 foreach (var program in await Proxies.SchedulerService.GetUpcomingPrograms(schedule, true))
                 {
                     var guideProgram = new GuideEnricherProgram(await Proxies.GuideService.GetProgramById(program.GuideProgramId.Value));
