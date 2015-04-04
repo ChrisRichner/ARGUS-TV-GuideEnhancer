@@ -1,6 +1,8 @@
 #ARGUS-TV-GuideEnhancer
 **Electronic Program Guide Enhancer for ARGUS TV 2.3.0+**
 
+![Overview](http://www.websequencediagrams.com/cgi-bin/cdraw?lz=QVJHVVMtVFYtPkd1aWRlIEVucmljaGVyOiBTY2hlZHVsZXMgY2hhbmdlZAoAFA4tPnRoZXR2ZGIuY29tOiBTZWFyY2ggc2VyaWVzABoRAE0QTWF0Y2hNZXRob2QAGxIAgQwIOiBTdG9yZSBTeHhFeHggaW5mbwo&s=mscgen)
+
 [ARGUS TV](http://http://www.argus-tv.com/ "ARGUS TV") is a sophisticated scheduling/recording engine. It has it's own Electronic Program Guide ([EPG](http://en.wikipedia.org/wiki/Electronic_program_guide)). You can populate the guide from many sources (i.e., [xmltv](http://wiki.xmltv.org/), [SchedulesDirect](http://www.schedulesdirect.org/), [WebGrab+](http://www.webgrabplus.com/) etc.).
 
 Regardless of the method with which you populate the [EPG](http://en.wikipedia.org/wiki/Electronic_program_guide), you may want to "enrich" your guide data to add Season and Episode numbers (SxxExx).
