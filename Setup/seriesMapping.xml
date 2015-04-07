@@ -355,6 +355,8 @@
 		<!-- Special Unit 2 / Special Unit II / Die Monsterjäger -->
 		<seriesMap schedulesDirectName="regex=Special Unit .*" tvdbComName="id=80707" />
 		<seriesMap schedulesDirectName="Die Monsterjäger" tvdbComName="id=80707" />
+		<!-- Wir Geiseln der SS / Wir, Geiseln der SS -->
+		<seriesMap schedulesDirectName="Wir Geiseln der SS" tvdbComName="id=294150" />
 
 	<!-- GERMAN IGNORE ENTRIES -->
 		<!-- Allein gegen die Zeit (wrong recognition) -->
