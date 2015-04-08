@@ -2,7 +2,7 @@ namespace GuideEnricher.Tests
 {
     using ArgusTV.DataContracts;
     using Model;
-
+    using Should;
     /// <summary>
     /// Used for unit testing, allows to set the expected result for episode number
     /// </summary>
@@ -18,5 +18,12 @@ namespace GuideEnricher.Tests
         }
 
         public string ExpectedEpisodeNumberDisplay { get; set; }
+
+        public void Assert()
+        {
+            // Assert
+            EpisodeIsEnriched().ShouldBeTrue();
+            ExpectedEpisodeNumberDisplay.ShouldEqual(EpisodeNumberDisplay, "ExpectedEpisodeNumberDisplay");
+        }
     }
 }

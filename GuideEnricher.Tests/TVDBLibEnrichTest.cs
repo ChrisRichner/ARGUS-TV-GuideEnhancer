@@ -162,9 +162,49 @@
             // Act
             enricher.EnrichProgram(program, series);
             // Assert
-            Assert.True(program.EpisodeIsEnriched());
-            program.EpisodeNumber.ShouldEqual(2);
-            program.SeriesNumber.ShouldEqual(1);
+            program.Assert();
         }
+
+        [Fact]
+        public void TestBlueBloods()
+        {
+            // Arrange
+            var program = new TestProgram("Blue Bloods", "Through the Looking Glass", 0, "S05E19");
+            var seriesNameMap = new Dictionary<string, string>(1);
+            seriesNameMap.Add("Blue Bloods", "id=164981");
+            var mockConfig = new Moq.Mock<IConfiguration>();
+            mockConfig.Setup(x => x.getSeriesNameMap()).Returns(seriesNameMap);
+            mockConfig.Setup(x => x.UpdateMatchedEpisodes).Returns(true);
+            mockConfig.Setup(x => x.UpdateSubtitlesParameter).Returns(true);
+            mockConfig.Setup(x => x.GetProperty(Moq.It.Is<string>((c) => c == "TvDbLanguage"))).Returns("en");
+            var tvDbApi = new TvDbService(GetWorkingDirectory(), Config.Instance.ApiKey);
+            var enricher = new TvdbLibAccess(mockConfig.Object, EpisodeMatchMethodLoader.GetMatchMethods(), tvDbApi);
+            var series = enricher.GetTvdbSeries(enricher.getSeriesId(program.Title), false);
+            // Act
+            enricher.EnrichProgram(program, series);
+            // Assert
+            program.Assert();
+        }
+
+        [Fact]
+        public void TestBlackSails()
+        {
+            // Arrange
+            var program = new TestProgram("Black Sails", "XVIII.", 0, "S02E10");
+            var seriesNameMap = new Dictionary<string, string>(1);
+            //seriesNameMap.Add("Blue Bloods", "id=164981");
+            var mockConfig = new Moq.Mock<IConfiguration>();
+            mockConfig.Setup(x => x.getSeriesNameMap()).Returns(seriesNameMap);
+            mockConfig.Setup(x => x.UpdateMatchedEpisodes).Returns(true);
+            mockConfig.Setup(x => x.UpdateSubtitlesParameter).Returns(true);
+            mockConfig.Setup(x => x.GetProperty(Moq.It.Is<string>((c) => c == "TvDbLanguage"))).Returns("en");
+            var tvDbApi = new TvDbService(GetWorkingDirectory(), Config.Instance.ApiKey);
+            var enricher = new TvdbLibAccess(mockConfig.Object, EpisodeMatchMethodLoader.GetMatchMethods(), tvDbApi);
+            var series = enricher.GetTvdbSeries(enricher.getSeriesId(program.Title), false);
+            // Act
+            enricher.EnrichProgram(program, series);
+            // Assert
+            program.Assert();
+        }        
     }
 }
