@@ -324,6 +324,10 @@
 	<!-- GERMAN MAPPING ENTRIES -->
 		<!-- Arne Dahl -->
 		<seriesMap schedulesDirectName="regex=Arne Dahl.*" tvdbComName="id=256282" />
+		<!-- Blutsbande (S, 2014, Original Title: "Tjockare än vatten" -->
+		<seriesMap schedulesDirectName="Blutsbande" tvdbComName="id=277908" />
+		<!-- Blutsbande (USA, 1984, Original Title: "Lace" / "Lace II" -->
+		<seriesMap schedulesDirectName="Blutsbande" tvdbComName="id=249189" />
 		<!-- Braquo - Das Gesetz war gestern -->
 		<seriesMap schedulesDirectName="regex=Braquo.*" tvdbComName="id=118451" />
 		<!-- Das Jenke-Experiment -->
