@@ -291,6 +291,10 @@
 		<!-- Touch -->
 		<seriesMap schedulesDirectName="Touch" tvdbComName="Touch (2012)"/>
 		<seriesMap schedulesDirectName="$..! Touch" tvdbComName="id=248935"/>
+		<!-- Transformers: Robots in Disguise (J, 2001) -->
+		<seriesMap schedulesDirectName="Transformers: Robots in Disguise" tvdbComName="id=77087" />
+		<!-- Transformers: Robots in Disguise (USA, 2015) -->
+		<seriesMap schedulesDirectName="Transformers: Robots in Disguise" tvdbComName="id=292171" />
 		<!-- Welcome to Sweden -->
 		<seriesMap schedulesDirectName="regex=Welcome to Swe.*" tvdbComName="id=274123"/>
 		<!-- Wilfred -->
@@ -359,6 +363,11 @@
 		<!-- Special Unit 2 / Special Unit II / Die Monsterjäger -->
 		<seriesMap schedulesDirectName="regex=Special Unit .*" tvdbComName="id=80707" />
 		<seriesMap schedulesDirectName="Die Monsterjäger" tvdbComName="id=80707" />
+		<!-- Transformers: Getarnte Roboter / Transformers: Robots in Disguise (USA, 2015) -->
+		<seriesMap schedulesDirectName="Transformers: Getarnte Roboter" tvdbComName="id=292171" />
+		<seriesMap schedulesDirectName="Transformers: Robots in Disguise" tvdbComName="id=292171" />
+		<!-- Transformers: Robots in Disguise (J, 2001) -->
+		<seriesMap schedulesDirectName="Transformers: Robots in Disguise" tvdbComName="id=77087" />
 		<!-- Wir Geiseln der SS / Wir, Geiseln der SS -->
 		<seriesMap schedulesDirectName="Wir Geiseln der SS" tvdbComName="id=294150" />
 
