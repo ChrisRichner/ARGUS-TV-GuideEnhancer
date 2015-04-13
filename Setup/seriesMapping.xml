@@ -368,6 +368,10 @@
 		<seriesMap schedulesDirectName="Transformers: Robots in Disguise" tvdbComName="id=292171" />
 		<!-- Transformers: Robots in Disguise (J, 2001) -->
 		<seriesMap schedulesDirectName="Transformers: Robots in Disguise" tvdbComName="id=77087" />
+		<!-- Verbrechen nach Ferdinand von Schirach -->
+		<seriesMap schedulesDirectName="regex=Verbrechen.*nach Ferdinand von Schirach" tvdbComName="id=268520" />
+		<!-- Von Lark Rise nach Candleford -->
+		<seriesMap schedulesDirectName="Von Lark Rise nach Candleford" tvdbComName="id=81161" />
 		<!-- Wir Geiseln der SS / Wir, Geiseln der SS -->
 		<seriesMap schedulesDirectName="Wir Geiseln der SS" tvdbComName="id=294150" />
 
