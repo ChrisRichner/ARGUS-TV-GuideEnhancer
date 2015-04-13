@@ -352,6 +352,8 @@
 		<seriesMap schedulesDirectName="regex=Ninjago.*" tvdbComName="id=253323" />
 		<!-- Once upon a time - Es war einmal... -->
 		<seriesMap schedulesDirectName="regex=Once Upon a Time -.*" tvdbComName="id=248835" />
+		<!-- Prime Suspect - Heißer Verdacht / Heißer Verdacht -->
+		<seriesMap schedulesDirectName="Prime Suspect - Heißer Verdacht" tvdbComName="id=76329" />
 		<!-- Reiff für die Insel -->
 		<seriesMap schedulesDirectName="regex=Reiff f.r die Insel.*" tvdbComName="id=270463" />
 		<!-- Rosamunde Pilcher -->
