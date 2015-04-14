@@ -199,6 +199,8 @@
 		<seriesMap schedulesDirectName="Louie" tvdbComName="Louie (2010)"/>
 		<!-- Marry Me -->
 		<seriesMap schedulesDirectName="regex=Marry Me.*" tvdbComName="id=281589"/>
+		<!-- Marvel’s Avengers Assemble / Avengers (2013)-->
+		<seriesMap schedulesDirectName="regex=Marvel.s Avengers Assemble" tvdbComName="id=264030" />
 		<!-- Merlin -->
 		<seriesMap schedulesDirectName="$..! Merlin" tvdbComName="id=83123"/>
 		<!-- Mike Rowe's -->
@@ -328,6 +330,9 @@
 	<!-- GERMAN MAPPING ENTRIES -->
 		<!-- Arne Dahl -->
 		<seriesMap schedulesDirectName="regex=Arne Dahl.*" tvdbComName="id=256282" />
+		<!-- Avengers - Gemeinsam unbesiegbar! / Marvel’s Avengers Assemble / Avengers (2013) -->
+		<seriesMap schedulesDirectName="regex=Avengers - Gemeinsam.*" tvdbComName="id=264030" />
+		<seriesMap schedulesDirectName="regex=Marvel.s Avengers Assemble" tvdbComName="id=264030" />
 		<!-- Blutsbande (S, 2014, Original Title: "Tjockare än vatten" -->
 		<seriesMap schedulesDirectName="Blutsbande" tvdbComName="id=277908" />
 		<!-- Blutsbande (USA, 1984, Original Title: "Lace" / "Lace II" -->
