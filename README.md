@@ -1,10 +1,19 @@
 #ARGUS-TV-GuideEnhancer
 **Electronic Program Guide Enhancer for ARGUS TV 2.3.0+**
 
+<<<<<<< HEAD
 [ARGUS TV](http://http://www.argus-tv.com/ "ARGUS TV") is a sophisticated scheduling/recording engine. It has it's own Electronic Program Guide ([EPG](http://en.wikipedia.org/wiki/Electronic_program_guide)). You can populate the guide from many sources (i.e., [xmltv](http://wiki.xmltv.org/), [SchedulesDirect](http://www.schedulesdirect.org/), [WebGrab+](http://www.webgrabplus.com/) etc.).
 
 Regardless of the method with which you populate the [EPG](http://en.wikipedia.org/wiki/Electronic_program_guide), you may want to "enrich" your guide data to add Season and Episode numbers (SxxExx).
 
+=======
+![Overview](http://www.websequencediagrams.com/cgi-bin/cdraw?lz=QVJHVVMtVFYtPkd1aWRlIEVucmljaGVyOiBTY2hlZHVsZXMgY2hhbmdlZAoAFA4tPnRoZXR2ZGIuY29tOiBTZWFyY2ggc2VyaWVzABoRAE0QTWF0Y2hNZXRob2QAGxIAgQwIOiBTdG9yZSBTeHhFeHggaW5mbwo&s=mscgen)
+
+[ARGUS TV](http://http://www.argus-tv.com/ "ARGUS TV") is a sophisticated scheduling/recording engine. It has it's own Electronic Program Guide ([EPG](http://en.wikipedia.org/wiki/Electronic_program_guide)). You can populate the guide from many sources (i.e., [xmltv](http://wiki.xmltv.org/), [SchedulesDirect](http://www.schedulesdirect.org/), [WebGrab+](http://www.webgrabplus.com/) etc.).
+
+Regardless of the method with which you populate the [EPG](http://en.wikipedia.org/wiki/Electronic_program_guide), you may want to "enrich" your guide data to add Season and Episode numbers (SxxExx).
+
+>>>>>>> release/v2.3.3
 This "enrich"-ing is useful for [XBMC/Kodi](http://www.kodi.tv "Kodi") or [MediaPortal](http://www.team-mediaportal.com/ "") plugin TVSeries that automatically download episode information, backdrops, ratings, etc. By enriching your guide data, you can automatically have the SxxExx information in your file names and thus have TVSeries register your recordings with no manual intervention.
 
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
@@ -138,6 +147,7 @@ If you see errors for series that cannot be found, take a look at the *GuideEnri
     <seriesMap schedulesDirectName="Monk" tvdbComName="" ignore="true"/>
   </seriesMapping>
 ```
+[seriesMapping.xml](/Setup/seriesMapping.xml) contains a collection of seriesMapping entries for you to get easily started.
 #####Match Methods
 You can change the priority of the match methods used for episode matching by changing the order. You can also comment out a method if you wish to disable it
 ```xml
@@ -214,6 +224,11 @@ to see what features or bugs need some work.  If you have an awesome idea feel f
 ##FAQ
 ####Can this be used in combination with WG+?
 Yes, WebGrab+ works perfectly combined with ARGUS-TV-GuideEnhancer.
+<<<<<<< HEAD
+=======
+####Do you provide cut&paste ready series mappings?
+Yes, [seriesMapping.xml](/Setup/seriesMapping.xml) contains a collection of seriesMapping entries for you to get easily started.
+>>>>>>> release/v2.3.3
 
 ##Questions or need help?
 Check out the **[Talk to us](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/wiki/Talk-to-us)** page on our wiki.

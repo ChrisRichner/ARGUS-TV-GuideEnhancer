@@ -13,6 +13,7 @@
     using System.Reflection;
     using TvdbLib.Data;
     using System.Globalization;
+    using System.Threading.Tasks;
 
     public class Enricher
     {
@@ -34,10 +35,10 @@
             this.seriesToEnrich = new Dictionary<string, GuideEnricherSeries>();
         }
 
-        public void EnrichUpcomingPrograms()
+        public async Task EnrichUpcomingProgramsAsync()
         {
-            this.AddUpcomingPrograms(ScheduleType.Suggestion);
-            this.AddUpcomingPrograms(ScheduleType.Recording);
+            await this.AddUpcomingProgramsAsync(ScheduleType.Suggestion);
+            await this.AddUpcomingProgramsAsync(ScheduleType.Recording);
 
             foreach (var series in this.seriesToEnrich.Values)
             {
@@ -58,7 +59,7 @@
             else
             {
                 var message = string.Format("No entries were enriched");
-                Proxies.LogService.LogMessage(MODULE, LogSeverity.Information, message);
+                await Proxies.LogService.LogMessage(MODULE, LogSeverity.Information, message);
                 log.Debug(message);
             }
 
@@ -67,25 +68,42 @@
                 log.DebugFormat("Match method {0} matched {1} out of {2} attempts", matchMethod.MethodName, matchMethod.SuccessfulMatches, matchMethod.MatchAttempts);
             }
         }
-
-        private void AddUpcomingPrograms(ScheduleType scheduleType)
+        private async Task AddUpcomingProgramsAsync(ScheduleType scheduleType)
         {
-            var programs = Proxies.SchedulerService.GetAllUpcomingPrograms(scheduleType, true).Result;//this.tvSchedulerService.GetAllUpcomingPrograms(scheduleType, true);
-            foreach (var program in programs.Where(p => p.Channel.ChannelType == ChannelType.Television))
+            var schedules = await Proxies.SchedulerService.GetAllSchedules(ChannelType.Television, scheduleType);
+            // EpisodeDisplayname must have S01E01 format
+            var episodeDataValidRegEx = new System.Text.RegularExpressions.Regex(@"S\d\dE\d\d");
+            //
+            foreach (var scheduleSummary in schedules)
             {
-                if (!program.GuideProgramId.HasValue)
+                if (!scheduleSummary.IsActive) continue;
+                //
+                var schedule = await Proxies.SchedulerService.GetScheduleById(scheduleSummary.ScheduleId);
+                // remove schedule filters
+                var filtersToRemove = new List<ScheduleRuleType>
+                        {
+                            { ScheduleRuleType.EpisodeNumberEquals },
+                            { ScheduleRuleType.EpisodeNumberContains },
+                            { ScheduleRuleType.EpisodeNumberDoesNotContain },
+                            { ScheduleRuleType.EpisodeNumberStartsWith },
+                            { ScheduleRuleType.NewEpisodesOnly },
+                            { ScheduleRuleType.NewTitlesOnly },
+                            { ScheduleRuleType.SkipRepeats }
+                         };
+                schedule.Rules.RemoveAll(x => filtersToRemove.Contains(x.Type));
+                //
+                foreach (var program in await Proxies.SchedulerService.GetUpcomingPrograms(schedule, true))
                 {
-                    log.DebugFormat("[{0}] - {1:MM/dd hh:mm tt} does not have a guide program entry", program.Title, program.StartTime);
-                    break;
+                    var guideProgram = new GuideEnricherProgram(await Proxies.GuideService.GetProgramById(program.GuideProgramId.Value));
+                    // skip already enriched entries
+                    if (!string.IsNullOrWhiteSpace(guideProgram.EpisodeNumberDisplay) || episodeDataValidRegEx.IsMatch(guideProgram.EpisodeNumberDisplay)) continue;
+                    //
+                    if (!this.seriesToEnrich.ContainsKey(guideProgram.Title))
+                    {
+                        this.seriesToEnrich.Add(guideProgram.Title, new GuideEnricherSeries(guideProgram.Title, config.UpdateMatchedEpisodes, config.UpdateSubtitlesParameter, config.UpdateDescription));
+                    }
+                    this.seriesToEnrich[guideProgram.Title].AddProgram(guideProgram);
                 }
-
-                var guideProgram = new GuideEnricherProgram(Proxies.GuideService.GetProgramById(program.GuideProgramId.Value).Result);//new GuideEnricherProgram(this.tvGuideService.GetProgramById(program.GuideProgramId.Value));
-                if (!this.seriesToEnrich.ContainsKey(guideProgram.Title))
-                {
-                    this.seriesToEnrich.Add(guideProgram.Title, new GuideEnricherSeries(guideProgram.Title, config.UpdateMatchedEpisodes, config.UpdateSubtitlesParameter, config.UpdateDescription));
-                }
-
-                this.seriesToEnrich[guideProgram.Title].AddProgram(guideProgram);
             }
         }
 

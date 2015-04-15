@@ -34,7 +34,7 @@ namespace GuideEnricher
             _logger = logger;
             _configuration = configuration;
             //
-            _eventsClientId = Guid.NewGuid().ToString();// string.Format("{0}-{1}-99b8cd44d1ab459cb16f199a48086588", Dns.GetHostName(), Environment.GetEnvironmentVariable("SESSIONNAME"));
+            _eventsClientId = Guid.NewGuid().ToString();
         }
         #endregion
 
@@ -42,7 +42,7 @@ namespace GuideEnricher
         public void StartEventListenerTask()
         {
             _listenerCancellationTokenSource = new CancellationTokenSource();
-            _eventListenerTask = new Task(() => ConnectAndHandleEvents(_listenerCancellationTokenSource.Token),
+            _eventListenerTask = new Task(() => ConnectAndHandleEvents(_listenerCancellationTokenSource.Token).Wait(),
                 _listenerCancellationTokenSource.Token, TaskCreationOptions.LongRunning);
             _eventListenerTask.Start();
         }
@@ -89,7 +89,7 @@ namespace GuideEnricher
         private bool _eventListenerSubscribed;
         private int _eventsErrorCount;
 
-        private async void ConnectAndHandleEvents(CancellationToken cancellationToken)
+        private async Task ConnectAndHandleEvents(CancellationToken cancellationToken)
         {
             _logger.Info("Connection and event listener task started...");
 

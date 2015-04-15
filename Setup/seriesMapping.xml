@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+  <!--
+  This file contains a collection of seriesMapping entries for you to get easily started.
+  It's usually the 2nd step to solve not found series' entries with specific seriesMapping-entries.
+  And the start with it may be difficult.
+  A mapping a) makes sure which series is to be addressed and b) makes the retrieval faster. 
+  Any ignore c) is always faster than a search.
+  
+  About this file:
+  1. This file is NOT a valid Guide Enricher configuration file as is!
+  2. It consists in this current versions out of two sections with each two subsections:
+     - A general section (series using international naming like "Castle")
+	   - Subsection: entries on this level you might want to ignore
+	 - A language-specific section (alphabetical order by language shortcut)
+	   - Subsection per language: entries you might want to ignore
+  3. Note: ignoring series performs faster than searching in vain - that's why.
+     Or - you simply want to ignore it :)
+  4. The general structure of this file is:
+     <configuration>	<!-- find in this tag the templates for your existing config file -->
+     <!-- INTERNATIONAL -->
+		<!-- INTERNATIONAL MAPPING ENTRIES -->
+			<seriesMap entry 1 />		<!-- ... etc., upto...  -->
+			<seriesMap entry x />
+		<!-- INTERNATIONAL IGNORE ENTRIES -->
+			<seriesMap entry 1 />		<!-- ... etc., upto...  -->
+			<seriesMap entry x />
+     <!-- LANGUAGE DE (GERMAN) -->
+		<!-- GERMAN MAPPING ENTRIES -->
+			<seriesMap entry 1 />		<!-- ... etc., upto...  -->
+			<seriesMap entry x />
+		<!-- GERMAN IGNORE ENTRIES -->
+			<seriesMap entry 1 />		<!-- ... etc., upto...  -->
+			<seriesMap entry x />
+	 </configuration>
+  
+  How to use:
+  - Do NOT use this WHOLE FILE "as is" as a seriesMapping entry.
+  - Search for the series names you want to map and copy the entry (if you want to, including the headline - it's a comment)
+    to your file "[drive]:\Program Files (x86)\Guide Enricher\GuideEnricherService.exe.config"
+  - use the section <configuration> -> <seriesMapping> as the target
+  - Make sure, the entries are valid and entered before the sections ending command </seriesMapping>
+  
+  For contributors:
+  - Please add entries that you would recommend to other users
+  - Please decide whether you add it in the international section or the language-specific section
+    - Select the proper sub-section: is it an entry for a mapping or for an ignore?
+  - Please add the series name in a "comment format" above the entry (easier to find using file search not knowing a potential regex)
+    This "comment format" shall be used in order that a user can copy it safely to the target without having any negative impact.
+  - FORMAT / EXAMPLE:
+    Please use the following format for an entry (exmple shows a series, which has two different names in German language):
+    (This template resides in section/subsection 
+	  <!-- LANGUAGE DE (GERMAN) -->
+	    <!-- GERMAN MAPPING ENTRIES --> 
+	of this file.
+	If there's just one name of a series, simply leave out the second entry)
+	<!-- Special Unit 2 / Special Unit II / Die Monsterjäger -->
+    <seriesMap schedulesDirectName="Die Monsterjäger" tvdbComName="id=80707" />
+    <seriesMap schedulesDirectName="regex=Special Unit .*" tvdbComName="id=80707" />
+
+  Support:
+  - Please feel free to drop all of your questions under the Argus-TV Guide Enrichers thread:
+    http://www.argus-tv.com/forum/viewtopic.php?f=76&t=4003&start=130&hilit=Guide+enricher
+   
+   -->
+
+
+<configuration>
+  <!--
+      This section allows you to create mappings from names in the 
+      guide data (i.e., SchedulesDirect) to names in thetvdb.com.
+
+      You need this because the names are not always equal.  It comes
+      in handy for shows that have the same name a really old shows....
+      Like Chase on NBC needs to have a mapping to Chase (2010) to help 
+      this tool find the proper series.
+
+      Use the logs to help debug.
+
+      If a regular name mapping does not work, you can use thetvdb.com
+      show ID as a direct map as shown with $..! My Dad Says below.
+
+      Also, you can use regular expressions to handle schedulesDirectNaming
+      problems for series names that occasionally have too much information 
+      in it.  The third example shows the use of a regex to tvdb.com name.
+      The fourth example shows using a regex to tvdb.com id
+
+      For shows that you record but know you're not going to find reliable
+      data on thetvdb.com, you can just choose to ignore them.  See 
+      the fifth entry for an example.  The tvdbComName still needs to be there
+      for the XML parser, so just make it an empty string like the example.
+
+    <seriesMap schedulesDirectName="$..! My Dad Says" tvdbComName="id=164951" />
+    <seriesMap schedulesDirectName="regex=Boston Leg.*" tvdbComName="Boston Legal" />
+    <seriesMap schedulesDirectName="regex=Boston Lega.*" tvdbComName="id=74058" />
+    <seriesMap schedulesDirectName="regex=The Daily Show.*" tvdbComName="" ignore="true" />
+   -->
+
+<!-- INTERNATIONAL -->
+	<!-- INTERNATIONAL MAPPING ENTRIES -->
+		<!-- Adventure Time -->
+		<seriesMap schedulesDirectName="$..! Adventure Time" tvdbComName="id=152831"/>
+		<!-- Alcatraz -->
+		<seriesMap schedulesDirectName="$..! Alcatraz" tvdbComName="id=248646"/>
+		<!-- American Dad -->
+		<seriesMap schedulesDirectName="$..! American Dad" tvdbComName="id=73141"/>
+		<!-- American Horror Story -->
+		<seriesMap schedulesDirectName="regex=American Horror Story.*" tvdbComName="American Horror Story"/>
+		<!-- Archer -->
+		<seriesMap schedulesDirectName="Archer" tvdbComName="Archer (2009)"/>
+		<!-- Atlantis -->
+		<seriesMap schedulesDirectName="Atlantis" tvdbComName="Atlantis (2013)"/>
+		<!-- Battlestar Galactica -->
+		<seriesMap schedulesDirectName="Battlestar Galactica" tvdbComName="Battlestar Galactica (2003)"/>
+		<!-- Beauty and the Beast -->
+		<seriesMap schedulesDirectName="Beauty and the Beast" tvdbComName="Beauty and the Beast (2012)"/>
+		<!-- Being Human -->
+		<seriesMap schedulesDirectName="regex=Being Huma.*" tvdbComName="id=196921"/>
+		<seriesMap schedulesDirectName="$..! Being Human" tvdbComName="id=196921"/>
+		<!-- Betrayal -->
+		<seriesMap schedulesDirectName="regex=Betrayal.*" tvdbComName="id=269647"/>
+		<!-- Bitten -->
+		<seriesMap schedulesDirectName="regex=Bitten.*" tvdbComName="id=269550"/>
+		<!-- Black Sails -->
+		<seriesMap schedulesDirectName="regex=Black Sails.*" tvdbComName="id=262407"/>
+		<!-- Body of Proof -->
+		<seriesMap schedulesDirectName="regex=Body of Proo.*" tvdbComName="Body of Proof"/>
+		<seriesMap schedulesDirectName="$..! Body of Proof" tvdbComName="id=167591"/>
+		<!-- Bones -->
+		<seriesMap schedulesDirectName="$..! Bones" tvdbComName="id=75682"/>
+		<!-- Boss -->
+		<seriesMap schedulesDirectName="Boss" tvdbComName="Boss (2011)"/>
+		<!-- Breaking Bad -->
+		<seriesMap schedulesDirectName="$..! Breaking Bad" tvdbComName="id=81189"/>
+		<!-- Castle -->
+		<seriesMap schedulesDirectName="Castle" tvdbComName="Castle (2009)"/>
+		<!-- Common Law -->
+		<seriesMap schedulesDirectName="$..! Common Law" tvdbComName="id=253982"/>
+		<!-- Deadliest Catch -->
+		<seriesMap schedulesDirectName="$..! Deadliest Catch" tvdbComName="id=78957"/>
+		<!-- Dirty Jobs -->
+		<seriesMap schedulesDirectName="$..! Dirty Jobs" tvdbComName="id=78904"/>
+		<!-- Doctor Who -->
+		<seriesMap schedulesDirectName="regex=Doctor Who.*" tvdbComName="id=78804"/>
+		<!-- Dr. House / House -->
+		<seriesMap schedulesDirectName="Dr. House" tvdbComName="id=73255"/>
+		<seriesMap schedulesDirectName="$..! House" tvdbComName="id=73255"/>
+		<!-- Dual Survival -->
+		<seriesMap schedulesDirectName="regex=Dual Survival.*" tvdbComName="id=166991"/>
+		<!-- Flashpoint -->
+		<seriesMap schedulesDirectName="Flashpoint" tvdbComName="id=82438"/>
+		<!-- Forever -->
+		<seriesMap schedulesDirectName="regex=Forever.*" tvdbComName="Forever (2014)"/>
+		<!-- Golden Boy -->
+		<seriesMap schedulesDirectName="Golden Boy" tvdbComName="Golden Boy (2013)"/>
+		<!-- Grimm -->
+		<seriesMap schedulesDirectName="$..! Grimm" tvdbComName="id=248736"/>
+		<!-- Hawaii Five-0 -->
+		<seriesMap schedulesDirectName="regex=Hawaii Five-0.*" tvdbComName="id=164541"/>
+		<!-- Harry's Law -->
+		<seriesMap schedulesDirectName="$..! Harry's Law" tvdbComName="id=163581"/>
+		<!-- Hell On Wheels -->
+		<seriesMap schedulesDirectName="regex=Hell on Whee.*" tvdbComName="Hell on Wheels"/>
+		<seriesMap schedulesDirectName="$..! Hell On Wheels" tvdbComName="id=212961"/>
+		<!-- Hindsight -->
+		<seriesMap schedulesDirectName="regex=Hindsight.*" tvdbComName="Hindsight (2015)"/>
+		<!-- Hot in Cleveland -->
+		<seriesMap schedulesDirectName="$..! Hot in Cleveland" tvdbComName="id=162071"/>
+		<!-- House / Dr. House -->
+		<seriesMap schedulesDirectName="Dr. House" tvdbComName="id=73255"/>
+		<seriesMap schedulesDirectName="$..! House" tvdbComName="id=73255"/>
+		<!-- How I Met Your Mother -->
+		<seriesMap schedulesDirectName="$..! How I Met Your Mother" tvdbComName="id=75760"/>
+		<!-- Inspector Lynley -->
+		<seriesMap schedulesDirectName="regex=Inspe.tor Lynley.*" tvdbComName="id=78774" />
+		<!-- Intelligence -->
+		<seriesMap schedulesDirectName="regex=Intelligence.*" tvdbComName="Intelligence (2014)"/>
+		<seriesMap schedulesDirectName="$..! Intelligence" tvdbComName="id=267260"/>
+		<!-- Intruders -->
+		<seriesMap schedulesDirectName="regex=Intruders.*" tvdbComName="id=277500"/>
+		<!-- Ironside -->
+		<seriesMap schedulesDirectName="Ironside" tvdbComName="Ironside (2013)"/>
+		<!-- It's Always Sunny in Philadelphia -->
+		<seriesMap schedulesDirectName="$..! It's Always Sunny in Philadelphia" tvdbComName="id=75805"/>
+		<!-- Kingdom -->
+		<seriesMap schedulesDirectName="regex=Kingdom.*" tvdbComName="Kingdom (2014)"/>
+		<!-- Last Man Standing -->
+		<seriesMap schedulesDirectName="Last Man Standing" tvdbComName="Last Man Standing (2011)"/>
+		<!-- Last Resort -->
+		<seriesMap schedulesDirectName="$..! Last Resort" tvdbComName="id=255413"/>
+		<!-- Legends -->
+		<seriesMap schedulesDirectName="regex=Legends.*" tvdbComName="Legends (2014)"/>
+		<!-- Leverage -->
+		<seriesMap schedulesDirectName="$..! Leverage" tvdbComName="id=82339"/>
+		<!-- Lewis -->
+		<seriesMap schedulesDirectName="regex=Lewis.*" tvdbComName="id=79864" />
+		<!-- Lost Girl -->
+		<seriesMap schedulesDirectName="$..! Lost Girl" tvdbComName="id=182061"/>
+		<!-- Louie -->
+		<seriesMap schedulesDirectName="Louie" tvdbComName="Louie (2010)"/>
+		<!-- Marry Me -->
+		<seriesMap schedulesDirectName="regex=Marry Me.*" tvdbComName="id=281589"/>
+		<!-- Marvel’s Avengers Assemble / Avengers (2013)-->
+		<seriesMap schedulesDirectName="regex=Marvel.s Avengers Assemble" tvdbComName="id=264030" />
+		<!-- Merlin -->
+		<seriesMap schedulesDirectName="$..! Merlin" tvdbComName="id=83123"/>
+		<!-- Mike Rowe's -->
+		<seriesMap schedulesDirectName="regex=Mike Rowe's.*" tvdbComName="id=284791"/>
+		<!-- Modern Family -->
+		<seriesMap schedulesDirectName="$..! Modern Family" tvdbComName="id=95011"/>
+		<!-- MythBusters -->
+		<seriesMap schedulesDirectName="$..! MythBusters" tvdbComName="id=73388"/>
+		<!-- Nashville -->
+		<seriesMap schedulesDirectName="regex=Nashville.*" tvdbComName="id=259055"/>
+		<!-- NCIS Los Angeles -->
+		<seriesMap schedulesDirectName="regex=NCIS Los.*" tvdbComName="id=95441"/>
+		<!-- Once Upon a Time -->
+		<seriesMap schedulesDirectName="Once Upon a Time" tvdbComName="Once Upon a Time (2011)"/>
+		<!-- Once Upon a Time in Wonderland -->
+		<seriesMap schedulesDirectName="$..! Once Upon a Time in Wonderland" tvdbComName="id=269654"/>
+		<!-- Outlander -->
+		<seriesMap schedulesDirectName="regex=Outlander.*" tvdbComName="id=270408"/>
+		<!-- Parenthood -->
+		<seriesMap schedulesDirectName="regex=Parenthood.*" tvdbComName="id=94551"/>
+		<!-- Prime Suspect -->
+		<seriesMap schedulesDirectName="regex=Prime Sus.*" tvdbComName="Prime Suspect (US)"/>
+		<!-- Reckless -->
+		<seriesMap schedulesDirectName="regex=Reckless.*" tvdbComName="id=269783"/>
+		<!-- Reign -->
+		<seriesMap schedulesDirectName="regex=Reign.*" tvdbComName="Reign (2013)"/>
+		<seriesMap schedulesDirectName="$..! Reign" tvdbComName="id=269602"/>
+		<!-- Revenge -->
+		<seriesMap schedulesDirectName="$..! Revenge" tvdbComName="id=248837"/>
+		<!-- Revolution -->
+		<seriesMap schedulesDirectName="$..! Revolution" tvdbComName="id=258823"/>
+		<!-- River Monsters: Unhooked -->
+		<seriesMap schedulesDirectName="River Monsters: Unhooked" tvdbComName="River Monsters"/>
+		<!-- Rizzoli & Isles -->
+		<seriesMap schedulesDirectName="$..! Rizzoli &amp; Isles" tvdbComName="id=161461"/>
+		<!-- Rookie Blue -->
+		<seriesMap schedulesDirectName="regex=Rookie Blue.*" tvdbComName="id=157631"/>
+		<!-- Rush -->
+		<seriesMap schedulesDirectName="$..! Rush" tvdbComName="id=280939"/>
+		<!-- Scandal -->
+		<seriesMap schedulesDirectName="regex=Scandal.*" tvdbComName="Scandal (2012)"/>
+		<!-- Secrets and Lies -->
+		<seriesMap schedulesDirectName="regex=Secrets and Lies.*" tvdbComName="id=279214"/>
+		<!-- Shameless -->
+		<seriesMap schedulesDirectName="regex=Shameless.*" tvdbComName="id=161511"/>
+		<!-- South Park -->
+		<seriesMap schedulesDirectName="$..! South Park" tvdbComName="id=75897"/>
+		<!-- Spartacus -->
+		<seriesMap schedulesDirectName="regex=Spartacus.*" tvdbComName="id=129261"/>
+		<!-- SpongeBob SquarePants -->
+		<seriesMap schedulesDirectName="$..! SpongeBob SquarePants" tvdbComName="id=75886"/>
+		<!-- Star Trek: Enterprise -->
+		<seriesMap schedulesDirectName="Star Trek: Enterprise" tvdbComName="id=73893" />
+		<!-- Suits -->
+		<seriesMap schedulesDirectName="$..! Suits" tvdbComName="id=247808"/>
+		<!-- Terminator: S.C.C. / Terminator: Sarah Connor Chronicles -->
+		<seriesMap schedulesDirectName="regex=Terminator. S.*" tvdbComName="id=80344" />
+		<!-- The Americans -->
+		<seriesMap schedulesDirectName="regex=The Americans.*" tvdbComName="The Americans (2013)"/>
+		<!-- The Big Bang Theory -->
+		<seriesMap schedulesDirectName="$..! The Big Bang Theory" tvdbComName="id=80379"/>
+		<!-- The Bridge -->
+		<seriesMap schedulesDirectName="regex=The Bridge.*" tvdbComName="The Bridge (2013)"/>
+		<!-- The Eagle -->
+		<seriesMap schedulesDirectName="$..! The Eagle" tvdbComName="id=79579"/>
+		<!-- The Finder -->
+		<seriesMap schedulesDirectName="$..! The Finder" tvdbComName="id=248651"/>
+		<!-- The Flash -->
+		<seriesMap schedulesDirectName="regex=The Flash.*" tvdbComName="id=279121"/>
+		<!-- The Honorable Woman -->
+		<seriesMap schedulesDirectName="The Honorable Woman" tvdbComName="The Honourable Woman"/>
+		<!-- The Killing -->
+		<seriesMap schedulesDirectName="The Killing" tvdbComName="The Killing (2011)"/>
+		<!-- The Layover With Anthony Bourdain -->
+		<seriesMap schedulesDirectName="regex=The Layover With Anthony Bourdain.*" tvdbComName="id=252207"/>
+		<!-- The Mentalist -->
+		<seriesMap schedulesDirectName="$..! The Mentalist" tvdbComName="id=82459"/>
+		<!-- The Missing -->
+		<seriesMap schedulesDirectName="regex=The Missing.*" tvdbComName="id=282401"/>
+		<!-- The Office -->
+		<seriesMap schedulesDirectName="The Office" tvdbComName="The Office (US)"/>
+		<!-- The River -->
+		<seriesMap schedulesDirectName="$..! The River" tvdbComName="id=248836"/>
+		<!-- The Tomorrow People -->
+		<seriesMap schedulesDirectName="regex=The Tomorro.*" tvdbComName="id=268591"/>
+		<!-- The Walking Dead -->
+		<seriesMap schedulesDirectName="$..! The Walking Dead" tvdbComName="id=153021"/>
+		<!-- Through the Wormhole -->
+		<seriesMap schedulesDirectName="regex=Through the Wormhole.*" tvdbComName="id=168571"/>
+		<!-- Touch -->
+		<seriesMap schedulesDirectName="Touch" tvdbComName="Touch (2012)"/>
+		<seriesMap schedulesDirectName="$..! Touch" tvdbComName="id=248935"/>
+		<!-- Transformers: Robots in Disguise (J, 2001) -->
+		<seriesMap schedulesDirectName="Transformers: Robots in Disguise" tvdbComName="id=77087" />
+		<!-- Transformers: Robots in Disguise (USA, 2015) -->
+		<seriesMap schedulesDirectName="Transformers: Robots in Disguise" tvdbComName="id=292171" />
+		<!-- Welcome to Sweden -->
+		<seriesMap schedulesDirectName="regex=Welcome to Swe.*" tvdbComName="id=274123"/>
+		<!-- Wilfred -->
+		<seriesMap schedulesDirectName="regex=Wilfred" tvdbComName="Wilfred (US)"/>
+		<!-- Up All Night -->
+		<seriesMap schedulesDirectName="regex=Up All Nig.*" tvdbComName="id=248943"/>
+		<seriesMap schedulesDirectName="$..! Up All Night" tvdbComName="id=248943"/>
+		<!-- White Collar -->
+		<seriesMap schedulesDirectName="$..! White Collar" tvdbComName="id=108611"/>
+		<!-- Zero Hour -->
+		<seriesMap schedulesDirectName="Zero Hour" tvdbComName="Zero Hour (2013)"/>
+		
+	<!-- INTERNATIONAL IGNORE ENTRIES -->
+		<!-- Castle -->
+		<seriesMap schedulesDirectName="Castle" tvdbComName="" ignore="true"/>
+		<!-- Dexter -->
+		<seriesMap schedulesDirectName="Dexter" tvdbComName="" ignore="true" />
+		<!-- Monk -->
+		<seriesMap schedulesDirectName="Monk" tvdbComName="" ignore="true" />
+		<!-- Rescue Me -->
+		<seriesMap schedulesDirectName="Rescue Me" tvdbComName="" ignore="true" />
+		<!-- Teen Wolf -->
+		<seriesMap schedulesDirectName="Teen Wolf" tvdbComName="" ignore="true" />
+		<!-- The Bletchley Circle -->
+		<seriesMap schedulesDirectName="regex=The Bletchley Circle.*" tvdbComName="" ignore="true" />
+		<!-- The Border -->
+		<seriesMap schedulesDirectName="The Border" tvdbComName="" ignore="true" />
+
+
+<!-- LANGUAGE DE (GERMAN) -->
+	<!-- GERMAN MAPPING ENTRIES -->
+		<!-- Arne Dahl -->
+		<seriesMap schedulesDirectName="regex=Arne Dahl.*" tvdbComName="id=256282" />
+		<!-- Avengers - Gemeinsam unbesiegbar! / Marvel’s Avengers Assemble / Avengers (2013) -->
+		<seriesMap schedulesDirectName="regex=Avengers - Gemeinsam.*" tvdbComName="id=264030" />
+		<seriesMap schedulesDirectName="regex=Marvel.s Avengers Assemble" tvdbComName="id=264030" />
+		<!-- Blutsbande (S, 2014, Original Title: "Tjockare än vatten" -->
+		<seriesMap schedulesDirectName="Blutsbande" tvdbComName="id=277908" />
+		<!-- Blutsbande (USA, 1984, Original Title: "Lace" / "Lace II" -->
+		<seriesMap schedulesDirectName="Blutsbande" tvdbComName="id=249189" />
+		<!-- Braquo - Das Gesetz war gestern -->
+		<seriesMap schedulesDirectName="regex=Braquo.*" tvdbComName="id=118451" />
+		<!-- Das Jenke-Experiment -->
+		<seriesMap schedulesDirectName="Das Jenke-Experiment" tvdbComName="id=268182" />
+		<!-- Fuchs und Gans / Heiter bis tödlich -->
+		<seriesMap schedulesDirectName="Fuchs und Gans" tvdbComName="id=262556" />
+		<!-- Justice - Nicht schuldig! -->
+		<seriesMap schedulesDirectName="regex=Justice.*" tvdbComName="id=79345" />
+		<!-- Lanfeust - The Quest -->
+		<seriesMap schedulesDirectName="Lanfeust" tvdbComName="id=276127" />
+		<!-- Lewis - Der Oxford-Krimi -->
+		<seriesMap schedulesDirectName="regex=Lewis.*" tvdbComName="id=79864" />
+		<!-- Mankells Wallander -->
+		<seriesMap schedulesDirectName="regex=Mankells Wallander.*" tvdbComName="id=82505" />
+		<!-- Mission Erde: Sie sind unter uns -->
+		<seriesMap schedulesDirectName="regex=Mission Erde.*" tvdbComName="id=71784" />
+		<!-- Ninjago + Staffelnamen -->
+		<seriesMap schedulesDirectName="regex=Ninjago.*" tvdbComName="id=253323" />
+		<!-- Once upon a time - Es war einmal... -->
+		<seriesMap schedulesDirectName="regex=Once Upon a Time -.*" tvdbComName="id=248835" />
+		<!-- Prime Suspect - Heißer Verdacht / Heißer Verdacht -->
+		<seriesMap schedulesDirectName="Prime Suspect - Heißer Verdacht" tvdbComName="id=76329" />
+		<!-- Reiff für die Insel -->
+		<seriesMap schedulesDirectName="regex=Reiff f.r die Insel.*" tvdbComName="id=270463" />
+		<!-- Rosamunde Pilcher -->
+		<seriesMap schedulesDirectName="regex=Rosamunde Pilcher.*" tvdbComName="id=252336" />
+		<!-- Sanctuary - Wächter der Kreaturen -->
+		<seriesMap schedulesDirectName="regex=Sanctuary.*" tvdbComName="id=80159" />
+		<!-- Schuld nach Ferdinand von Schirach -->
+		<seriesMap schedulesDirectName="regex=Schuld.*nach Ferdinand von Schirach" tvdbComName="id=291773" />
+		<!-- Special Unit 2 / Special Unit II / Die Monsterjäger -->
+		<seriesMap schedulesDirectName="regex=Special Unit .*" tvdbComName="id=80707" />
+		<seriesMap schedulesDirectName="Die Monsterjäger" tvdbComName="id=80707" />
+		<!-- Transformers: Getarnte Roboter / Transformers: Robots in Disguise (USA, 2015) -->
+		<seriesMap schedulesDirectName="Transformers: Getarnte Roboter" tvdbComName="id=292171" />
+		<seriesMap schedulesDirectName="Transformers: Robots in Disguise" tvdbComName="id=292171" />
+		<!-- Transformers: Robots in Disguise (J, 2001) -->
+		<seriesMap schedulesDirectName="Transformers: Robots in Disguise" tvdbComName="id=77087" />
+		<!-- Verbrechen nach Ferdinand von Schirach -->
+		<seriesMap schedulesDirectName="regex=Verbrechen.*nach Ferdinand von Schirach" tvdbComName="id=268520" />
+		<!-- Von Lark Rise nach Candleford -->
+		<seriesMap schedulesDirectName="Von Lark Rise nach Candleford" tvdbComName="id=81161" />
+		<!-- Wir Geiseln der SS / Wir, Geiseln der SS -->
+		<seriesMap schedulesDirectName="Wir Geiseln der SS" tvdbComName="id=294150" />
+
+	<!-- GERMAN IGNORE ENTRIES -->
+		<!-- Allein gegen die Zeit (wrong recognition) -->
+		<seriesMap schedulesDirectName="Allein gegen die Zeit" tvdbComName="" ignore="true" />
+		<!-- Biete Rostlaube, suche Traumauto -->
+		<seriesMap schedulesDirectName="Biete Rostlaube, suche Traumauto" tvdbComName="" ignore="true" />
+		<!-- Carolin Kebekus: PussyTerror TV -->
+		<seriesMap schedulesDirectName="regex=Carolin Kebekus.*" tvdbComName="" ignore="true" />
+		<!-- Das Einrichtungkommando! In 90 Minuten ein neues Zuhause -->
+		<seriesMap schedulesDirectName="regex=Das Einrichtungskommando.*" tvdbComName="" ignore="true" />
+		<!-- Dein Song -->
+		<seriesMap schedulesDirectName="regex=Dein Song.*" tvdbComName="" ignore="true" />
+		<!-- Der Trödeltrupp - Das Geld liegt im Keller -->
+		<seriesMap schedulesDirectName="regex=Der Tr.deltrupp.*" tvdbComName="" ignore="true" />
+		<!-- Die Bauretter -->
+		<seriesMap schedulesDirectName="Die Bauretter" tvdbComName="" ignore="true" />
+		<!-- Die Küchenchefs -->
+		<seriesMap schedulesDirectName="Die K.chenchefs" tvdbComName="" ignore="true" />
+		<!-- Die Pferdeprofis -->
+		<seriesMap schedulesDirectName="Die Pferdeprofis" tvdbComName="" ignore="true" />
+		<!-- Germany's next Topmodel -->
+		<seriesMap schedulesDirectName="regex=Germany.*s next Topmodel.*" tvdbComName="" ignore="true" />
+		<!-- heute-show -->
+		<seriesMap schedulesDirectName="heute-show" tvdbComName="" ignore="true" />
+		<!-- Mein neuer Alter -->
+		<seriesMap schedulesDirectName="Mein neuer Alter" tvdbComName="" ignore="true" />
+		<!-- Momo -->
+		<seriesMap schedulesDirectName="Momo" tvdbComName="" ignore="true" />
+		<seriesMap schedulesDirectName="regex=Momo.*" tvdbComName="" ignore="true" />
+		<!-- Richter Alexander Hold -->
+		<seriesMap schedulesDirectName="Richter Alexander Hold" tvdbComName="" ignore="true" />
+		<seriesMap schedulesDirectName="Alexander Hold" tvdbComName="" ignore="true" />
+		<!-- Richterin Barbara Salesch -->
+		<seriesMap schedulesDirectName="Richterin Barbara Salesch" tvdbComName="" ignore="true" />
+		<seriesMap schedulesDirectName="Barbara Salesch" tvdbComName="" ignore="true" />
+		<!-- Terra X -->
+		<seriesMap schedulesDirectName="Terra X" tvdbComName="" ignore="true" />
+		<!-- Zuhause im Glück - Unser Einzug in ein neues Leben -->
+		<seriesMap schedulesDirectName="regex=Zuhause im Glück.*" tvdbComName="" ignore="true" />
+   
+
+   <!--
+    Ignores which collect recommendations &/ series mappings to (probably) distinct IDs.
+  -->
+  <ignores>
+    <seriesMap schedulesDirectName="Star Trek: Enterprise" tvdbComName="id=73893" />
+  </ignores>
+</configuration>

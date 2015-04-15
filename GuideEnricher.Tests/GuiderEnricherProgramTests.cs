@@ -3,13 +3,12 @@ namespace GuideEnricher.Tests
 
     using ArgusTV.DataContracts;
     using Model;
-    using NUnit.Framework;
     using Should;
+    using Xunit;
 
-    [TestFixture]
     public class GuiderEnricherProgramTests
     {
-        [Test]
+        [Fact]
         public void EpisodeIsEnricherReturnsTrueWhenEpisodeNumberAndSeasonEpisode()
         {
             var guideProgram = new GuideProgram();
@@ -20,7 +19,7 @@ namespace GuideEnricher.Tests
             program.EpisodeIsEnriched().ShouldBeTrue();
         }
 
-        [Test]
+        [Fact]
         public void EpisodeIsEnricherReturnsFalseWhenNoEpisodeNumber()
         {
             var guideProgram = new GuideProgram();
@@ -28,7 +27,7 @@ namespace GuideEnricher.Tests
             program.EpisodeIsEnriched().ShouldBeFalse();
         }
 
-        [Test]
+        [Fact]
         public void EpisodeIsEnricherReturnsFalseWhenNoSeasonEpisode()
         {
             var guideProgram = new GuideProgram();

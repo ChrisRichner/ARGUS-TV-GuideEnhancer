@@ -5,15 +5,15 @@
 
     using Config;
     using EpisodeMatchMethods;
-    using GuideEnricher.tvdb;
+    using tvdb;
 
     using log4net.Config;
 
-    using NUnit.Framework;
-
     using Should;
     using System.Globalization;
-
+    using Xunit;
+    using System.Reflection;
+    using System.IO;
 
     /// <summary>
     /// Use this class to test actual episodes against TVDB
@@ -21,14 +21,11 @@
     /// </summary>
     /// These tests are being ignored for now as TVDB is not always responding and slowing down tests
     /// It's bad practice anyways ;)
-    [TestFixture]
-    //[Ignore]
     public class TVDBLibEnrichTest
     {
         private List<TestProgram> testPrograms;
 
-        [TestFixtureSetUp]
-        public void FixtureSetup()
+        public TVDBLibEnrichTest()
         {
             BasicConfigurator.Configure();
         }
@@ -45,7 +42,7 @@
             this.testPrograms.Add(new TestProgram("Shark Tank", "Episode 2", 202, "S02E02"));
         }
 
-        [Test]
+        [Fact]
         public void SeriesWithPunctuationsAreMatchedCorrectly()
         {
             var matchMethods = new List<IEpisodeMatchMethod>();
@@ -58,7 +55,7 @@
             seriesID.ShouldEqual(73141);
         }
 
-        [Test]
+        [Fact]
         public void TestEnricherMethods()
         {
             var tvDbService = new TvDbService(Config.Instance.CacheFolder, Config.Instance.ApiKey);
@@ -90,18 +87,11 @@
                     Console.WriteLine(exception.Message);
                 }
             }
-
-            if (pass)
-            {
-                Assert.Pass();
-            }
-            else
-            {
-                Assert.Fail();
-            }
+            //
+            Assert.True(pass, "Test failed!");
         }
 
-        [Test]
+        [Fact]
         public void TestMappingNameWithID()
         {
             var lawOrderProgram = new TestProgram("Law & Order: Special Victims Unit", "Identity", 0, "S06E12");
@@ -109,14 +99,14 @@
             seriesNameMap.Add("Law & Order: Special Victims Unit", "id=75692");
             var mockConfig = new Moq.Mock<IConfiguration>();
             mockConfig.Setup(x => x.getSeriesNameMap()).Returns(seriesNameMap);
-            var tvDbApi = new TvDbService(TestContext.CurrentContext.WorkDirectory, Config.Instance.ApiKey);
+            var tvDbApi = new TvDbService(GetWorkingDirectory(), Config.Instance.ApiKey);
             var enricher = new TvdbLibAccess(mockConfig.Object, EpisodeMatchMethodLoader.GetMatchMethods(), tvDbApi);
             var series = enricher.GetTvdbSeries(enricher.getSeriesId(lawOrderProgram.Title), false);
             enricher.EnrichProgram(lawOrderProgram, series);
-            Assert.IsTrue(lawOrderProgram.EpisodeIsEnriched());
+            Assert.True(lawOrderProgram.EpisodeIsEnriched());
         }
 
-        [Test]
+        [Fact]
         public void TestMappingRegex()
         {
             var lawOrderProgram = new TestProgram("Stargate Atlantis123", "Common Ground", 0, "S03E07");
@@ -124,14 +114,14 @@
             seriesNameMap.Add("regex=Stargate Atl.*", "Stargate Atlantis");
             var mockConfig = new Moq.Mock<IConfiguration>();
             mockConfig.Setup(x => x.getSeriesNameMap()).Returns(seriesNameMap);
-            var tvDbApi = new TvDbService(TestContext.CurrentContext.WorkDirectory, Config.Instance.ApiKey);
+            var tvDbApi = new TvDbService(GetWorkingDirectory(), Config.Instance.ApiKey);
             var enricher = new TvdbLibAccess(mockConfig.Object, EpisodeMatchMethodLoader.GetMatchMethods(), tvDbApi);
             var series = enricher.GetTvdbSeries(enricher.getSeriesId(lawOrderProgram.Title), false);
             enricher.EnrichProgram(lawOrderProgram, series);
-            Assert.IsTrue(lawOrderProgram.EpisodeIsEnriched());
+            Assert.True(lawOrderProgram.EpisodeIsEnriched());
         }
 
-        [Test]
+        [Fact]
         public void TestRegularMapping()
         {
             var lawOrderProgram = new TestProgram("Stargate Atlantis123", "Common Ground", 0, "S03E07");
@@ -139,14 +129,23 @@
             seriesNameMap.Add("Stargate Atlantis123", "Stargate Atlantis");
             var mockConfig = new Moq.Mock<IConfiguration>();
             mockConfig.Setup(x => x.getSeriesNameMap()).Returns(seriesNameMap);
-            var tvDbApi = new TvDbService(TestContext.CurrentContext.WorkDirectory, Config.Instance.ApiKey);
+            //
+            var tvDbApi = new TvDbService(GetWorkingDirectory(), Config.Instance.ApiKey);
             var enricher = new TvdbLibAccess(mockConfig.Object, EpisodeMatchMethodLoader.GetMatchMethods(), tvDbApi);
             var series = enricher.GetTvdbSeries(enricher.getSeriesId(lawOrderProgram.Title), false);
             enricher.EnrichProgram(lawOrderProgram, series);
-            Assert.IsTrue(lawOrderProgram.EpisodeIsEnriched());
+            Assert.True(lawOrderProgram.EpisodeIsEnriched());
         }
 
-        [Test]
+        private static string GetWorkingDirectory()
+        {
+            var codeBaseUrl = new Uri(Assembly.GetExecutingAssembly().CodeBase);
+            var codeBasePath = Uri.UnescapeDataString(codeBaseUrl.AbsolutePath);
+            var dirPath = Path.GetDirectoryName(codeBasePath);
+            return dirPath;
+        }
+
+        [Fact]
         public void TestAgathaChristiesMarple()
         {
             // Arrange
@@ -157,15 +156,55 @@
             mockConfig.Setup(x => x.getSeriesNameMap()).Returns(seriesNameMap);
             mockConfig.Setup(x => x.UpdateMatchedEpisodes).Returns(true);
             mockConfig.Setup(x => x.UpdateSubtitlesParameter).Returns(true);
-            var tvDbApi = new TvDbService(TestContext.CurrentContext.WorkDirectory, Config.Instance.ApiKey);
+            var tvDbApi = new TvDbService(GetWorkingDirectory(), Config.Instance.ApiKey);
             var enricher = new TvdbLibAccess(mockConfig.Object, EpisodeMatchMethodLoader.GetMatchMethods(), tvDbApi);
             var series = enricher.GetTvdbSeries(enricher.getSeriesId(program.Title), false);
             // Act
             enricher.EnrichProgram(program, series);
             // Assert
-            Assert.IsTrue(program.EpisodeIsEnriched());
-            program.EpisodeNumber.ShouldEqual(2);
-            program.SeriesNumber.ShouldEqual(1);
+            program.Assert();
         }
+
+        [Fact]
+        public void TestBlueBloods()
+        {
+            // Arrange
+            var program = new TestProgram("Blue Bloods", "Through the Looking Glass", 0, "S05E19");
+            var seriesNameMap = new Dictionary<string, string>(1);
+            seriesNameMap.Add("Blue Bloods", "id=164981");
+            var mockConfig = new Moq.Mock<IConfiguration>();
+            mockConfig.Setup(x => x.getSeriesNameMap()).Returns(seriesNameMap);
+            mockConfig.Setup(x => x.UpdateMatchedEpisodes).Returns(true);
+            mockConfig.Setup(x => x.UpdateSubtitlesParameter).Returns(true);
+            mockConfig.Setup(x => x.GetProperty(Moq.It.Is<string>((c) => c == "TvDbLanguage"))).Returns("en");
+            var tvDbApi = new TvDbService(GetWorkingDirectory(), Config.Instance.ApiKey);
+            var enricher = new TvdbLibAccess(mockConfig.Object, EpisodeMatchMethodLoader.GetMatchMethods(), tvDbApi);
+            var series = enricher.GetTvdbSeries(enricher.getSeriesId(program.Title), false);
+            // Act
+            enricher.EnrichProgram(program, series);
+            // Assert
+            program.Assert();
+        }
+
+        [Fact]
+        public void TestBlackSails()
+        {
+            // Arrange
+            var program = new TestProgram("Black Sails", "XVIII.", 0, "S02E10");
+            var seriesNameMap = new Dictionary<string, string>(1);
+            //seriesNameMap.Add("Blue Bloods", "id=164981");
+            var mockConfig = new Moq.Mock<IConfiguration>();
+            mockConfig.Setup(x => x.getSeriesNameMap()).Returns(seriesNameMap);
+            mockConfig.Setup(x => x.UpdateMatchedEpisodes).Returns(true);
+            mockConfig.Setup(x => x.UpdateSubtitlesParameter).Returns(true);
+            mockConfig.Setup(x => x.GetProperty(Moq.It.Is<string>((c) => c == "TvDbLanguage"))).Returns("en");
+            var tvDbApi = new TvDbService(GetWorkingDirectory(), Config.Instance.ApiKey);
+            var enricher = new TvdbLibAccess(mockConfig.Object, EpisodeMatchMethodLoader.GetMatchMethods(), tvDbApi);
+            var series = enricher.GetTvdbSeries(enricher.getSeriesId(program.Title), false);
+            // Act
+            enricher.EnrichProgram(program, series);
+            // Assert
+            program.Assert();
+        }        
     }
 }

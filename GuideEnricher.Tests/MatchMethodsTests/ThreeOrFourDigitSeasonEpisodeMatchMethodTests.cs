@@ -15,21 +15,18 @@ namespace GuideEnricher.Tests.MatchMethodsTests
     using EpisodeMatchMethods;
     using Model;
 
-    using NUnit.Framework;
-
     using TvdbLib.Data;
 
     using Should;
+    using Xunit;
 
-    [TestFixture]
     public class ThreeOrFourDigitSeasonEpisodeMatchMethodTests
     {
         private readonly NumericSeasonEpisodeMatchMethod matcher = new NumericSeasonEpisodeMatchMethod();
 
         private List<TvdbEpisode> episodes;
 
-        [SetUp]
-        public void SetUp()
+        public ThreeOrFourDigitSeasonEpisodeMatchMethodTests()
         {
             this.episodes = new List<TvdbEpisode>(3)
                                 {
@@ -39,7 +36,7 @@ namespace GuideEnricher.Tests.MatchMethodsTests
                                 };
         }
 
-        [Test]
+        [Fact]
         public void EpisodeAsSubTitle302MapsToSeason3Episode2()
         {
             var program = new GuideEnricherProgram(new GuideProgram { Title = "Some Program", SubTitle = "302" });
@@ -51,7 +48,7 @@ namespace GuideEnricher.Tests.MatchMethodsTests
             program.EpisodeNumberDisplay.ShouldEqual("S03E02");
         }
 
-        [Test]
+        [Fact]
         public void EpisodeNumber302MapsToSeason3Episode2()
         {
             var program = new GuideEnricherProgram(new GuideProgram { Title = "Some Program", EpisodeNumber = 302 });
@@ -63,7 +60,7 @@ namespace GuideEnricher.Tests.MatchMethodsTests
             program.EpisodeNumberDisplay.ShouldEqual("S03E02");
         }
 
-        [Test]
+        [Fact]
         public void EpisodeAsSubTitle1108MapsToSeason11Episode8()
         {
             var program = new GuideEnricherProgram(new GuideProgram { Title = "Some Program", SubTitle = "1108" });
@@ -75,7 +72,7 @@ namespace GuideEnricher.Tests.MatchMethodsTests
             program.EpisodeNumberDisplay.ShouldEqual("S11E08");
         }
 
-        [Test]
+        [Fact]
         public void EpisodeNumber1108MapsToSeason11Episode8()
         {
             var program = new GuideEnricherProgram(new GuideProgram { Title = "Some Program", EpisodeNumber = 1108 });
