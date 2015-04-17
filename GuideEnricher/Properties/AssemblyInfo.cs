@@ -28,9 +28,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can use the default the Revision and 
 // Build Numbers by using the '*' as shown below:
-<<<<<<< HEAD
-[assembly: AssemblyVersion("2.3.2.*")]
-=======
 [assembly: AssemblyVersion("2.3.3.*")]
->>>>>>> release/v2.3.3
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
