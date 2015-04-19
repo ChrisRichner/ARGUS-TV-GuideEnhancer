@@ -351,6 +351,8 @@
 		<seriesMap schedulesDirectName="regex=Lewis.*" tvdbComName="id=79864" />
 		<!-- Mankells Wallander -->
 		<seriesMap schedulesDirectName="regex=Mankells Wallander.*" tvdbComName="id=82505" />
+		<!-- Marvel Super Heroes: Maximale Superkräfte / LEGO Marvel Super Heroes: Maximale Superkräfte -->
+		<seriesMap schedulesDirectName="regex=Marvel Super Heroes.* Maximale Superkräfte" tvdbComName="id=275173" />
 		<!-- Mission Erde: Sie sind unter uns -->
 		<seriesMap schedulesDirectName="regex=Mission Erde.*" tvdbComName="id=71784" />
 		<!-- Ninjago + Staffelnamen -->
