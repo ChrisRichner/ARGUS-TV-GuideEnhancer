@@ -345,6 +345,9 @@
 		<seriesMap schedulesDirectName="regex=Dicte.*" tvdbComName="id=265571" />
 		<!-- Fuchs und Gans / Heiter bis tödlich -->
 		<seriesMap schedulesDirectName="Fuchs und Gans" tvdbComName="id=262556" />
+		<!-- Fünf Freunde - für alle Fälle / 5 Freunde - für alle Fälle / Fünf Freunde für alle Fälle -->
+		<seriesMap schedulesDirectName="regex=5 Freunde .*" tvdbComName="id=154441" />
+		<seriesMap schedulesDirectName="regex=Fünf Freunde .*" tvdbComName="id=154441" />
 		<!-- Justice - Nicht schuldig! -->
 		<seriesMap schedulesDirectName="regex=Justice.*" tvdbComName="id=79345" />
 		<!-- Lanfeust - The Quest -->
@@ -374,6 +377,8 @@
 		<!-- Special Unit 2 / Special Unit II / Die Monsterjäger -->
 		<seriesMap schedulesDirectName="regex=Special Unit .*" tvdbComName="id=80707" />
 		<seriesMap schedulesDirectName="Die Monsterjäger" tvdbComName="id=80707" />
+		<!-- The Quest - Die Krone von König Artus / The Quest - Die Serie / The Quest -->
+		<seriesMap schedulesDirectName="regex=The Quest .*" tvdbComName="id=281709" />
 		<!-- Transformers: Getarnte Roboter / Transformers: Robots in Disguise (USA, 2015) -->
 		<seriesMap schedulesDirectName="Transformers: Getarnte Roboter" tvdbComName="id=292171" />
 		<seriesMap schedulesDirectName="Transformers: Robots in Disguise" tvdbComName="id=292171" />
