@@ -1,12 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-<<<<<<< HEAD
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
-=======
 # Visual Studio 14
 VisualStudioVersion = 14.0.22609.0
->>>>>>> release/v2.3.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "GuideEnricher\Service.csproj", "{9D718DA7-3160-4968-8048-361D7C1F3009}"
 EndProject
@@ -14,15 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "GuideEnricher.T
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{62DF0FCB-5872-4E78-B007-2D05BE2E3DD0}"
 	ProjectSection(SolutionItems) = preProject
-<<<<<<< HEAD
-		Setup\Releases\GuideEnricherInstall-v2.3.0.42695_B704E703-9938-45E0-B637-4C37E8835860.msi = Setup\Releases\GuideEnricherInstall-v2.3.0.42695_B704E703-9938-45E0-B637-4C37E8835860.msi
-		Setup\Releases\GuideEnricherInstall-v2.3.1.40323_BC0E21F0-3370-4366-A599-D6BB8BA29D96.msi = Setup\Releases\GuideEnricherInstall-v2.3.1.40323_BC0E21F0-3370-4366-A599-D6BB8BA29D96.msi
-		Setup\Releases\GuideEnricherInstall-v2.3.2.37248_97D85E01-EB93-4B0F-A01B-3A3F09D0D116.msi = Setup\Releases\GuideEnricherInstall-v2.3.2.37248_97D85E01-EB93-4B0F-A01B-3A3F09D0D116.msi
-=======
 		Setup\license.rtf = Setup\license.rtf
 		Setup\Product.wxs = Setup\Product.wxs
 		Setup\seriesMapping.xml = Setup\seriesMapping.xml
->>>>>>> release/v2.3.3
 		References\TvdbLib.dll = References\TvdbLib.dll
 		References\TvdbLib.pdb = References\TvdbLib.pdb
 	EndProjectSection

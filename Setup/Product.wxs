@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-<<<<<<< HEAD
-  <Product Id="*" Name="Guide Enricher" Language="1033" Version="2.3.2.0" Manufacturer="Chris Richner" UpgradeCode="BC0E21F0-3370-4366-A599-D6BB8BA29D96">
-    <Package Description="Fetches season and episode information from TheTVDB for ARGUS-TV's guide" Manufacturer="Chris Richner" InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
-    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-    <Media Id="1" Cabinet="contents.cab" EmbedCab="yes" CompressionLevel="high" />
-    <Feature Id="Complete" Title="Guide Enricher Install" Description="Main entry point for installer" Level="1">
-      <ComponentRef Id="License" />
-      <ComponentRef Id="ServiceExe" />
-      <ComponentRef Id="ServiceExeConfig" />
-      <ComponentRef Id="Tvdblibdll" />
-      <ComponentRef Id="ftrfiles" />
-      <ComponentRef Id="log4net" />
-      <ComponentRef Id="topshelf" />
-    </Feature>
-    <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
-    <!-- 
-=======
     <Product Id="*" Name="Guide Enricher" Language="1033" Version="2.3.3.0" Manufacturer="Chris Richner" UpgradeCode="BC0E21F0-3370-4366-A599-D6BB8BA29D96">
         <Package Description="Fetches season and episode information from TheTVDB for ARGUS-TV's guide" Manufacturer="Chris Richner" InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
         <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -32,69 +15,12 @@
             <ComponentRef Id="topshelf" />
         </Feature>
         <!-- 
->>>>>>> release/v2.3.3
          Using the Wix UI library
  
          WixUI_InstallDir does not allow the user to choose 
          features but adds a dialog to let the user choose a 
          directory where the product will be installed
       -->
-<<<<<<< HEAD
-    <Property Id="WIXUI_INSTALLDIR">INSTALLDIR</Property>
-    <UIRef Id="WixUI_InstallDir" />
-    <Upgrade Id="97D85E01-EB93-4B0F-A01B-3A3F09D0D116">
-      <UpgradeVersion OnlyDetect="no" Minimum="0.1" Property="NEWFILES">
-      </UpgradeVersion>
-    </Upgrade>
-    <CustomAction Id="InstallService" FileKey="ServiceExe" ExeCommand="install" Execute="deferred" Return="check" Impersonate="no" />
-    <CustomAction Id="UninstallService" FileKey="ServiceExe" ExeCommand="uninstall" Execute="deferred" Return="ignore" Impersonate="no" />
-    <CustomAction Id="SetCMD_Prop" Property="CMD_PROP" Value="[SystemFolder]cmd.exe" />
-    <CustomAction Id="BackupConfig2" Property="CMD_PROP" Execute="deferred" Impersonate="no" Return="ignore" ExeCommand="/c move &quot;[INSTALLDIR]GuideEnricherService.exe.config&quot; &quot;[INSTALLDIR]GuideEnricherService.exe.config.bak&quot;" />
-    <CustomAction Id="StartService" Property="CMD_PROP" Execute="deferred" Impersonate="no" Return="ignore" ExeCommand="/c net start &quot;Guide Enricher&quot;" />
-    <CustomAction Id="StopService" Property="CMD_PROP" Execute="deferred" Impersonate="no" Return="ignore" ExeCommand="/c net stop &quot;Guide Enricher&quot;" />
-    <InstallExecuteSequence>
-      <!--<RemoveExistingProducts Before="InstallInitialize" />-->
-      <Custom Action="InstallService" Before="InstallFinalize">NOT Installed</Custom>
-      <Custom Action="StartService" After="InstallService">NOT Installed</Custom>
-      <Custom Action="SetCMD_Prop" Before="InstallInitialize" />
-      <Custom Action="BackupConfig2" After="InstallInitialize">Installed AND NOT UPGRADINGPRODUCTCODE</Custom>
-      <Custom Action="StopService" Before="UninstallService">Installed AND NOT UPGRADINGPRODUCTCODE</Custom>
-      <Custom Action="UninstallService" After="InstallInitialize">Installed AND NOT UPGRADINGPRODUCTCODE</Custom>
-    </InstallExecuteSequence>
-    <UI />
-  </Product>
-  <Fragment>
-    <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="ProgramFilesFolder">
-        <Directory Id="INSTALLDIR" Name="Guide Enricher">
-          <Component Id="License" Guid="16ED3327-230C-4A7B-A593-6684E27D71FF" DiskId="1">
-            <File Id="LicenseFile" Name="license.rtf" Source="license.rtf" />
-          </Component>
-          <Component Id="ServiceExe" Guid="BB06A3CF-236E-4612-B23D-671210C4270D">
-            <File Id="ServiceExe" Name="GuideEnricherService.exe" Source="..\GuideEnricher\bin\Release\GuideEnricherService.exe" KeyPath="yes" />
-            <ServiceControl Id="ServiceExeStart" Name="GuideEnricher" Stop="both" Remove="uninstall" Wait="yes" />
-          </Component>
-          <Component Id="ServiceExeConfig" Guid="8A85871A-BAA0-424F-bFAA-D1CB576D8F74" KeyPath="yes" Permanent="yes">
-            <File Id="ServiceExeConfig" Name="GuideEnricherService.exe.config" Source="..\GuideEnricher\bin\Release\GuideEnricherService.exe.config" />
-          </Component>
-          <Component Id="Tvdblibdll" Guid="0A2F94ED-4D4E-4E3B-82BE-4B936C96F6F7" KeyPath="yes">
-            <File Id="Tvdblibdll" Name="TvdbLib.dll" Source="..\GuideEnricher\bin\Release\TvdbLib.dll" />
-          </Component>
-          <Component Id="ftrfiles" Guid="68699CF2-2A86-4606-B1A6-4C2EF91A6DB1" KeyPath="yes">
-            <File Id="ftrdllentities" Name="ArgusTV.DataContracts.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.DataContracts.dll" />
-            <File Id="ftrdllserviceagents" Name="ArgusTV.ServiceProxy.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.ServiceProxy.dll" />
-            <File Id="MICROSOFT.THREADING.TASKS.DLL" Name="Microsoft.Threading.Tasks.dll" Source="..\GuideEnricher\bin\Release\Microsoft.Threading.Tasks.dll" />
-            <File Id="MICROSOFT.THREADING.TASKS.EXTENSIONS.DESKTOP.DLL" Name="Microsoft.Threading.Tasks.Extensions.Desktop.dll" Source="..\GuideEnricher\bin\Release\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
-            <File Id="MICROSOFT.THREADING.TASKS.EXTENSIONS.DLL" Name="Microsoft.Threading.Tasks.Extensions.dll" Source="..\GuideEnricher\bin\Release\Microsoft.Threading.Tasks.Extensions.dll" />
-            <File Id="RESTSHARP.DLL" Name="RestSharp.dll" Source="..\GuideEnricher\bin\Release\RestSharp.dll" />
-          </Component>
-          <Component Id="topshelf" Guid="40B2A181-F42F-46EB-997C-8EF890E7B89D" KeyPath="yes">
-            <File Id="topshelf" Name="Topshelf.dll" Source="..\GuideEnricher\bin\Release\Topshelf.dll" />
-          </Component>
-          <Component Id="log4net" Guid="1E687561-415B-4A91-82C9-D4BC9D440278" KeyPath="yes">
-            <File Id="log4netdll" Name="log4net.dll" Source="..\GuideEnricher\bin\Release\log4net.dll" />
-          </Component>
-=======
         <Property Id="WIXUI_INSTALLDIR">INSTALLDIR</Property>
         <UIRef Id="WixUI_InstallDir" />
         <Upgrade Id="B704E703-9938-45E0-B637-4C37E8835860">
@@ -154,9 +80,6 @@
                     </Component>
                 </Directory>
             </Directory>
->>>>>>> release/v2.3.3
         </Directory>
-      </Directory>
-    </Directory>
-  </Fragment>
+    </Fragment>
 </Wix>
