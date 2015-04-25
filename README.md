@@ -1,5 +1,6 @@
-#ARGUS-TV-GuideEnhancer
+#ARGUS-TV-GuideEnhancer [![Build status](https://ci.appveyor.com/api/projects/status/tphqjou7bkc3ctoy?svg=true)](https://ci.appveyor.com/project/ChrisRichner/argus-tv-guideenhancer)
 **Electronic Program Guide Enhancer for ARGUS TV 2.3.0+**
+
 
 ![Overview](http://www.websequencediagrams.com/cgi-bin/cdraw?lz=QVJHVVMtVFYtPkd1aWRlIEVucmljaGVyOiBTY2hlZHVsZXMgY2hhbmdlZAoAFA4tPnRoZXR2ZGIuY29tOiBTZWFyY2ggc2VyaWVzABoRAE0QTWF0Y2hNZXRob2QAGxIAgQwIOiBTdG9yZSBTeHhFeHggaW5mbwo&s=mscgen)
 
