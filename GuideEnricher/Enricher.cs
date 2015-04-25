@@ -96,7 +96,9 @@
                 {
                     var guideProgram = new GuideEnricherProgram(await Proxies.GuideService.GetProgramById(program.GuideProgramId.Value));
                     // skip already enriched entries
-                    if (!string.IsNullOrWhiteSpace(guideProgram.EpisodeNumberDisplay) && episodeDataValidRegEx.IsMatch(guideProgram.EpisodeNumberDisplay)) continue;
+                    if (episodeDataValidRegEx.IsMatch(guideProgram.EpisodeNumberDisplay)) continue;
+                    // skip already running shows
+                    if (guideProgram.StartTime <= DateTimeOffset.Now) continue;
                     //
                     if (!this.seriesToEnrich.ContainsKey(guideProgram.Title))
                     {
