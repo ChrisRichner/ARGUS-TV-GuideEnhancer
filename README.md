@@ -141,7 +141,7 @@ If you see errors for series that cannot be found, take a look at the *GuideEnri
     <seriesMap schedulesDirectName="Monk" tvdbComName="" ignore="true"/>
   </seriesMapping>
 ```
-[seriesMapping.xml](/Setup/seriesMapping.xml) contains a collection of seriesMapping entries for you to get easily started.
+[seriesMapping.xml](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/blob/develop/Setup/seriesMapping.xml) contains a collection of seriesMapping entries for you to get easily started.
 #####Match Methods
 You can change the priority of the match methods used for episode matching by changing the order. You can also comment out a method if you wish to disable it
 ```xml
