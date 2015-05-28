@@ -341,6 +341,9 @@
 		<seriesMap schedulesDirectName="regex=Braquo.*" tvdbComName="id=118451" />
 		<!-- Das Jenke-Experiment -->
 		<seriesMap schedulesDirectName="Das Jenke-Experiment" tvdbComName="id=268182" />
+		<!-- Dead like me - so gut wie tot / So gut wie tot - Dead like me  -->
+		<seriesMap schedulesDirectName="regex=Dead like me.*" tvdbComName="id=72129" />
+		<seriesMap schedulesDirectName="regex=So gut wie tot.*" tvdbComName="id=72129" />
 		<!-- Dicte Svendsen - Die Unbestechliche / Dicte  -->
 		<seriesMap schedulesDirectName="regex=Dicte.*" tvdbComName="id=265571" />
 		<!-- Fuchs und Gans / Heiter bis tödlich -->
