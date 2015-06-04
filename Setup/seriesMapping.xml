@@ -344,6 +344,8 @@
 		<!-- Dead like me - so gut wie tot / So gut wie tot - Dead like me  -->
 		<seriesMap schedulesDirectName="regex=Dead like me.*" tvdbComName="id=72129" />
 		<seriesMap schedulesDirectName="regex=So gut wie tot.*" tvdbComName="id=72129" />
+		<!-- Der ultimative Spider-Man - verschiedene Staffelnamen  -->
+		<seriesMap schedulesDirectName="regex=Der ultimative Spider-Man.*" tvdbComName="id=257645" />
 		<!-- Dicte Svendsen - Die Unbestechliche / Dicte  -->
 		<seriesMap schedulesDirectName="regex=Dicte.*" tvdbComName="id=265571" />
 		<!-- Fuchs und Gans / Heiter bis tödlich -->
