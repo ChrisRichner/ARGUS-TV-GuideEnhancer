@@ -252,6 +252,8 @@
 		<seriesMap schedulesDirectName="regex=Spartacus.*" tvdbComName="id=129261"/>
 		<!-- SpongeBob SquarePants -->
 		<seriesMap schedulesDirectName="$..! SpongeBob SquarePants" tvdbComName="id=75886"/>
+		<!-- Star-Crossed (with or without hyphen) -->
+		<seriesMap schedulesDirectName="regex=Star.Crossed" tvdbComName="id=269604" />
 		<!-- Star Trek: Enterprise -->
 		<seriesMap schedulesDirectName="Star Trek: Enterprise" tvdbComName="id=73893" />
 		<!-- Suits -->
@@ -386,6 +388,8 @@
 		<!-- Special Unit 2 / Special Unit II / Die Monsterjäger -->
 		<seriesMap schedulesDirectName="regex=Special Unit .*" tvdbComName="id=80707" />
 		<seriesMap schedulesDirectName="Die Monsterjäger" tvdbComName="id=80707" />
+		<!-- Star-Crossed (mit oder ohne Bindestrich) -->
+		<seriesMap schedulesDirectName="regex=Star.Crossed" tvdbComName="id=269604" />
 		<!-- The Quest - Die Krone von König Artus / The Quest - Die Serie / The Quest -->
 		<seriesMap schedulesDirectName="regex=The Quest .*" tvdbComName="id=281709" />
 		<!-- Transformers: Getarnte Roboter / Transformers: Robots in Disguise (USA, 2015) -->
