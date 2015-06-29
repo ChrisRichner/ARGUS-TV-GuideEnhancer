@@ -252,6 +252,8 @@
 		<seriesMap schedulesDirectName="regex=Spartacus.*" tvdbComName="id=129261"/>
 		<!-- SpongeBob SquarePants -->
 		<seriesMap schedulesDirectName="$..! SpongeBob SquarePants" tvdbComName="id=75886"/>
+		<!-- Star-Crossed (with or without hyphen) -->
+		<seriesMap schedulesDirectName="regex=Star.Crossed" tvdbComName="id=269604" />
 		<!-- Star Trek: Enterprise -->
 		<seriesMap schedulesDirectName="Star Trek: Enterprise" tvdbComName="id=73893" />
 		<!-- Suits -->
@@ -341,8 +343,16 @@
 		<seriesMap schedulesDirectName="regex=Braquo.*" tvdbComName="id=118451" />
 		<!-- Das Jenke-Experiment -->
 		<seriesMap schedulesDirectName="Das Jenke-Experiment" tvdbComName="id=268182" />
+		<!-- Dead like me - so gut wie tot / So gut wie tot - Dead like me  -->
+		<seriesMap schedulesDirectName="regex=Dead like me.*" tvdbComName="id=72129" />
+		<seriesMap schedulesDirectName="regex=So gut wie tot.*" tvdbComName="id=72129" />
+		<!-- Der ultimative Spider-Man - verschiedene Staffelnamen  -->
+		<seriesMap schedulesDirectName="regex=Der ultimative Spider-Man.*" tvdbComName="id=257645" />
 		<!-- Dicte Svendsen - Die Unbestechliche / Dicte  -->
 		<seriesMap schedulesDirectName="regex=Dicte.*" tvdbComName="id=265571" />
+		<!-- Earth: Final Conflict / Mission Erde: Sie sind unter uns -->
+		<seriesMap schedulesDirectName="regex=Mission Erde.*" tvdbComName="id=71784" />
+		<seriesMap schedulesDirectName="regex=Earth - Final C.*" tvdbComName="id=71784" />
 		<!-- Fuchs und Gans / Heiter bis tödlich -->
 		<seriesMap schedulesDirectName="Fuchs und Gans" tvdbComName="id=262556" />
 		<!-- Fünf Freunde - für alle Fälle / 5 Freunde - für alle Fälle / Fünf Freunde für alle Fälle -->
@@ -358,8 +368,9 @@
 		<seriesMap schedulesDirectName="regex=Mankells Wallander.*" tvdbComName="id=82505" />
 		<!-- Marvel Super Heroes: Maximale Superkräfte / LEGO Marvel Super Heroes: Maximale Superkräfte -->
 		<seriesMap schedulesDirectName="regex=Marvel Super Heroes.* Maximale Superkräfte" tvdbComName="id=275173" />
-		<!-- Mission Erde: Sie sind unter uns -->
+		<!-- Mission Erde: Sie sind unter uns / Earth: Final Conflict -->
 		<seriesMap schedulesDirectName="regex=Mission Erde.*" tvdbComName="id=71784" />
+		<seriesMap schedulesDirectName="regex=Earth - Final C.*" tvdbComName="id=71784" />
 		<!-- Ninjago + Staffelnamen -->
 		<seriesMap schedulesDirectName="regex=Ninjago.*" tvdbComName="id=253323" />
 		<!-- Once upon a time - Es war einmal... -->
@@ -377,6 +388,8 @@
 		<!-- Special Unit 2 / Special Unit II / Die Monsterjäger -->
 		<seriesMap schedulesDirectName="regex=Special Unit .*" tvdbComName="id=80707" />
 		<seriesMap schedulesDirectName="Die Monsterjäger" tvdbComName="id=80707" />
+		<!-- Star-Crossed (mit oder ohne Bindestrich) -->
+		<seriesMap schedulesDirectName="regex=Star.Crossed" tvdbComName="id=269604" />
 		<!-- The Quest - Die Krone von König Artus / The Quest - Die Serie / The Quest -->
 		<seriesMap schedulesDirectName="regex=The Quest .*" tvdbComName="id=281709" />
 		<!-- Transformers: Getarnte Roboter / Transformers: Robots in Disguise (USA, 2015) -->
