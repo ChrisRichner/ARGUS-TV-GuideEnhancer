@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-    <Product Id="*" Name="Guide Enricher" Language="1033" Version="2.3.4.0" Manufacturer="Chris Richner" UpgradeCode="BC0E21F0-3370-4366-A599-D6BB8BA29D96">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="Guide Enricher" Language="1033" Version="2.3.4.0" Manufacturer="Chris Richner" UpgradeCode="BC0E21F0-3370-4366-A599-D6BB8BA29D96">
         <Package Description="Fetches season and episode information from TheTVDB for ARGUS-TV's guide" Manufacturer="Chris Richner" InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
         <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
         <Media Id="1" Cabinet="contents.cab" EmbedCab="yes" CompressionLevel="high" />
@@ -69,8 +69,7 @@
                         <File Id="ftrdllserviceagents" Name="ArgusTV.ServiceProxy.dll" Source="..\GuideEnricher\bin\Release\ArgusTV.ServiceProxy.dll" />
                         <File Id="MICROSOFT.THREADING.TASKS.DLL" Name="Microsoft.Threading.Tasks.dll" Source="..\GuideEnricher\bin\Release\Microsoft.Threading.Tasks.dll" />
                         <File Id="MICROSOFT.THREADING.TASKS.EXTENSIONS.DESKTOP.DLL" Name="Microsoft.Threading.Tasks.Extensions.Desktop.dll" Source="..\GuideEnricher\bin\Release\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
-                        <File Id="MICROSOFT.THREADING.TASKS.EXTENSIONS.DLL" Name="Microsoft.Threading.Tasks.Extensions.dll" Source="..\GuideEnricher\bin\Release\Microsoft.Threading.Tasks.Extensions.dll" />
-                        <File Id="RESTSHARP.DLL" Name="RestSharp.dll" Source="..\GuideEnricher\bin\Release\RestSharp.dll" />
+                        <File Id="MICROSOFT.THREADING.TASKS.EXTENSIONS.DLL" Name="Microsoft.Threading.Tasks.Extensions.dll" Source="..\GuideEnricher\bin\Release\Microsoft.Threading.Tasks.Extensions.dll" />                        
                     </Component>
                     <Component Id="topshelf" Guid="40B2A181-F42F-46EB-997C-8EF890E7B89D" KeyPath="yes">
                         <File Id="topshelf" Name="Topshelf.dll" Source="..\GuideEnricher\bin\Release\Topshelf.dll" />
