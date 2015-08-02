@@ -164,31 +164,11 @@ namespace GuideEnricher
                 _eventListenerSubscribed = false;
             }
         }
-
-        ServerSettings GetServerSettings()
-        {
-            var serverSettings = new ServerSettings();
-            serverSettings.ServerName = _configuration.GetProperty("ftrUrlHost");
-            serverSettings.Port = Convert.ToInt32(_configuration.GetProperty("ftrUrlPort"));
-            var password = _configuration.GetProperty("ftrUrlPassword");
-            var userName = _configuration.GetProperty("ftrUserName");
-
-            if (!string.IsNullOrEmpty(userName))
-            {
-                serverSettings.UserName = userName;
-            }
-            if (!string.IsNullOrEmpty(password))
-            {
-                serverSettings.Password = password;
-            }
-
-            return serverSettings;
-        }
+              
 
         protected async Task<bool> InitializeConnectionToArgusTV()
         {
-            ServerSettings serverSettings = GetServerSettings();
-            return await Proxies.InitializeAsync(serverSettings, false);
+            return await Proxies.InitializeAsync(Service.GetServerSettings(), false);
         }
         #endregion
 
