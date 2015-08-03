@@ -358,6 +358,8 @@
 		<!-- Fünf Freunde - für alle Fälle / 5 Freunde - für alle Fälle / Fünf Freunde für alle Fälle -->
 		<seriesMap schedulesDirectName="regex=5 Freunde .*" tvdbComName="id=154441" />
 		<seriesMap schedulesDirectName="regex=Fünf Freunde .*" tvdbComName="id=154441" />
+		<!-- Hör ma, wer da hämmert / different interpunctuation -->
+		<seriesMap schedulesDirectName="regex=Hör*mal*wer da hämmert" tvdbComName="id=77537" />
 		<!-- Justice - Nicht schuldig! -->
 		<seriesMap schedulesDirectName="regex=Justice.*" tvdbComName="id=79345" />
 		<!-- Lanfeust - The Quest -->
@@ -371,6 +373,8 @@
 		<!-- Mission Erde: Sie sind unter uns / Earth: Final Conflict -->
 		<seriesMap schedulesDirectName="regex=Mission Erde.*" tvdbComName="id=71784" />
 		<seriesMap schedulesDirectName="regex=Earth - Final C.*" tvdbComName="id=71784" />
+		<!-- Nachtschicht / Nachtschicht - wir sind die Polizei -->
+		<seriesMap schedulesDirectName="Nachtschicht - wir sind die Polizei tvdbComName="id=128141" />
 		<!-- Ninjago + Staffelnamen -->
 		<seriesMap schedulesDirectName="regex=Ninjago.*" tvdbComName="id=253323" />
 		<!-- Once upon a time - Es war einmal... -->
