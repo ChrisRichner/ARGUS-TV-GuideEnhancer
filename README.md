@@ -1,4 +1,4 @@
-#ARGUS-TV-GuideEnhancer [![Build status](https://ci.appveyor.com/api/projects/status/tphqjou7bkc3ctoy?svg=true)](https://ci.appveyor.com/project/ChrisRichner/argus-tv-guideenhancer)
+# ARGUS-TV-GuideEnhancer [![Build status](https://ci.appveyor.com/api/projects/status/tphqjou7bkc3ctoy?svg=true)](https://ci.appveyor.com/project/ChrisRichner/argus-tv-guideenhancer)
 **Electronic Program Guide Enhancer for ARGUS TV 2.3.0+**
 
 
@@ -26,26 +26,26 @@ This "enrich"-ing is useful for [XBMC/Kodi](http://www.kodi.tv "Kodi") or [Media
 	- [Frequently asked questions (FAQ)](#faq)
 	- [Questions or need help?](#questions-or-need-help)
 
-##Getting Started
+## Getting Started
 If you are going to use the Guide Enricher, follow these steps.
 
 Caution: This version of ARGUS-TV-GuideEnhancer is only compatible with ARGUS-TV Version 2.3.0 and later. In case you're using an older ARGUS-TV Version please [visit this site](https://code.google.com/p/ftr-guide-enhancer/).
 
 
-###Requirements
+### Requirements
 - .NET Framework 4.5 is required (web installer http://go.microsoft.com/fwlink/p/?LinkId=397703 or offline installer http://go.microsoft.com/fwlink/p/?LinkId=397706)
 - Make sure you have [ARGUS-TV 2.3.0+](http://www.argus-tv.com/forum/viewforum.php?f=67) installed and running
 
-###Installation
+### Installation
 - Download the [Guide Enricher installer](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/releases "Guide Enricher Releases")
 - Run the Guide Enricher installer
 - Only option is path where to install it...
 - After a successful install (hopefully), you will have a windows service called GuideEnricher available
 
-###Configuration
+### Configuration
 You can customize the *GuideEnricherService.exe.config* file in the program directory. (When using notepad/editor on Windows, using "Save as" and then left of the save button there is a dropbox "encoding". This should be UTF-8, not ANSI)
 
-#####Application Settings
+##### Application Settings
 ```xml
 <appSettings>
     <!-- Location to store cache of thetvdb.com data -->
@@ -101,7 +101,7 @@ You can customize the *GuideEnricherService.exe.config* file in the program dire
     <add key="updateSubtitles" value="true"/>
   </appSettings>
   ```
-#####Series Mapping
+##### Series Mapping
 If you see errors for series that cannot be found, take a look at the *GuideEnricherService.exe.config* file in the program directory. You will be able to add series name mappings in there. Restart the service for changes to take effect.
 ```xml
 <!--
@@ -160,7 +160,7 @@ You can change the priority of the match methods used for episode matching by ch
     </MatchMethods>
   </MatchMethodsSection>
   ```
-#####Logging
+##### Logging
 Logs are written to the *guideenricher.log* file in the program directory. You can view them by simpley double clicking the *guideenricher.log* file in your desired text editor. To change the [log level](http://logging.apache.org/log4net/release/sdk/log4net.Core.Level.html) you must set the root level to one of the following values
 - ALL
 - DEBUG
@@ -206,20 +206,20 @@ Logs are written to the *guideenricher.log* file in the program directory. You c
   </log4net>
 ```
   
-###Troubleshoot
+### Troubleshoot
 Guide Enricher can also be started as a Console Application by double clicking *GuideEnricherService.exe* after you manually stopped the GuideEnricher Windows Service. The Console outputs all log events in real time.
 
 Set dumpepisodes to 'true' in the config file if you want all episodes for a series dumped to the logger. Please make sure logging is set to at least info level. Restart the service for changes to take effect.
 
-##Contributing
+## Contributing
 Contributions are welcome; fork ARGUS-TV-GuideEnhancer and submit a pull request. If your looking for something to do you can always check out [issues page](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/issues)
 to see what features or bugs need some work.  If you have an awesome idea feel free to submit an [issue](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/issues/new), but pull requests are best.
 
-##FAQ
-####Can this be used in combination with WG+?
+## FAQ
+#### Can this be used in combination with WG+?
 Yes, WebGrab+ works perfectly combined with ARGUS-TV-GuideEnhancer.
-####Do you provide cut&paste ready series mappings?
+#### Do you provide cut&paste ready series mappings?
 Yes, [seriesMapping.xml](/Setup/seriesMapping.xml) contains a collection of seriesMapping entries for you to get easily started.
 
-##Questions or need help?
+## Questions or need help?
 Check out the **[Talk to us](https://github.com/ChrisRichner/ARGUS-TV-GuideEnhancer/wiki/Talk-to-us)** page on our wiki.
